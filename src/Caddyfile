@@ -1,0 +1,20 @@
+(prestashop) {
+    root * /app/prestashop
+
+    php_fastcgi localhost:9000
+    file_server browse
+
+    log {
+        format console
+    }
+    encode zstd gzip
+}
+
+http://localhost {
+    import prestashop
+}
+
+https://localhost {
+    import prestashop
+    tls internal
+}
