@@ -1,6 +1,9 @@
 # Redirect rules for PrestaShop pretty URLs
 (prestashop-redirects) {
-    rewrite /api* {$REWRITEBASE}/webservice/dispatcher.php?url={1}
+    @api {
+        path_regexp api ^/api/?(.*)$
+    }
+    rewrite @api {$REWRITEBASE}/webservice/dispatcher.php?url={re.api.1}&{query}
 
     rewrite /upload/* {$REWRITEBASE}/index.php
 
