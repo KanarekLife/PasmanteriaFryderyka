@@ -7,6 +7,9 @@ case $ACTION in
   start)
     docker compose -f $COMPOSE_FILE up -d
     ;;
+  run)
+    docker compose -f $COMPOSE_FILE up
+    ;;
   stop)
     docker compose -f $COMPOSE_FILE down
     ;;

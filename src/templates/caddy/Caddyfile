@@ -10,11 +10,11 @@
     encode zstd gzip
 }
 
-http://localhost {
+http://${DOMAIN} {
     import prestashop
 }
 
-https://localhost {
+https://${DOMAIN} {
     import prestashop
     tls internal
 }

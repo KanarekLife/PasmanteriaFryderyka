@@ -3,6 +3,7 @@ FROM php:7.4-fpm-alpine
 WORKDIR /app
 
 RUN apk add --no-cache \
+    gettext \
     caddy \
     nss-tools \
     libzip-dev \
@@ -24,7 +25,9 @@ RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.
 
 EXPOSE 80 443
 
-COPY entrypoint.sh Caddyfile ./
+COPY entrypoint.sh ./
+
+COPY templates /app/templates
 
 COPY prestashop /app/prestashop
 

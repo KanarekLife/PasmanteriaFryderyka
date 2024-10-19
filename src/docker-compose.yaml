@@ -5,8 +5,17 @@ services:
     ports:
       - "8080:80"
       - "8443:443"
-    volumes:
-      - ./prestashop:/app/prestashop
+    environment:
+      DB_HOST: prestashop-db
+      DB_NAME: ${MARIADB_DATABASE}
+      DB_USER: ${MARIADB_USER}
+      DB_PASSWORD: ${MARIADB_PASSWORD}
+      DOMAIN: ${DOMAIN}
+      SECRET: ${SECRET}
+      COOKIE_KEY: ${COOKIE_KEY}
+      COOKIE_IV: ${COOKIE_IV}
+      NEW_COOKIE_KEY: ${NEW_COOKIE_KEY}
+      DEV_MODE: "false"
     depends_on:
       - prestashop-db
 
