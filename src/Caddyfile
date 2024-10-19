@@ -1,3 +1,4 @@
+# Redirect rules for PrestaShop pretty URLs
 (prestashop-redirects) {
     rewrite /api* {$REWRITEBASE}/webservice/dispatcher.php?url={1}
 
@@ -51,18 +52,51 @@
     rewrite /images_ie/* {$REWRITEBASE}/js/jquery/plugins/fancybox/images/{1}.{2}
 }
 
+# Static file server for PrestaShop
 (prestashop-file_server) {
     file_server /img/*
+
     file_server /themes/*
-    file_server /modules/*
+
+    @modules {
+        path /modules/*
+        not path /modules/*/vendor/*
+    }
+    file_server @modules 
+
     file_server /upload/*
+
     file_server /download/*
+
     file_server /js/*
-    file_server /translations/*
+
     @adminThemeDir {
         path_regexp admin ^/admin[0-9a-zA-Z]+/themes/.*$
     }
     file_server @adminThemeDir
+
+    # Prevent access to sensitive files and directories
+    @hiddenFiles {
+        path_regexp hiddenFiles /\. 
+    }
+    respond @hiddenFiles 403
+
+    @sensitiveFiles {
+        path_regexp sensitiveFiles \.(log|tpl|twig|sass|yml)$
+    }
+    respond @sensitiveFiles 403
+
+    @phpInImg {
+        path /img/*
+        path_regexp phpImg \.php$
+    }
+    respond @phpInImg 403
+
+    @phpInUpload {
+        path /upload/*
+        path_regexp phpUpload \.php$
+    }
+    respond @phpInUpload 403
 }
 
 (prestashop) {
