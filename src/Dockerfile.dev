@@ -25,7 +25,7 @@ RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.
 
 EXPOSE 80 443
 
-COPY entrypoint.sh ./
+COPY Caddyfile entrypoint.sh ./
 
 COPY templates /app/templates
 
