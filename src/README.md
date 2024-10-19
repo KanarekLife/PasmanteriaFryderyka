@@ -32,7 +32,9 @@ docker compose -f docker-compose.dev.yaml up
 
 4. Install PrestaShop.
 
-Follow the installation steps in your browser. By default, PrestaShop will be available at `https://localhost:8443`.
+Follow the installation steps in your browser. By default, PrestaShop installer will be available at `https://localhost:8443/install`. 
+
+5. Remove the `install` directory.
 
 If you want to change the domain the shop is available at, you have to update it via the PrestaShop admin panel (Preferences -> SEO & URLs) and the `DOMAIN` variable in the `.env` file.
 
