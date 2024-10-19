@@ -70,6 +70,8 @@
 
     file_server /js/*
 
+    file_server /install/*
+
     @adminThemeDir {
         path_regexp admin ^/admin[0-9a-zA-Z]+/themes/.*$
     }
