@@ -51,12 +51,26 @@
     rewrite /images_ie/* {$REWRITEBASE}/js/jquery/plugins/fancybox/images/{1}.{2}
 }
 
+(prestashop-file_server) {
+    file_server /img/*
+    file_server /themes/*
+    file_server /modules/*
+    file_server /upload/*
+    file_server /download/*
+    file_server /js/*
+    file_server /translations/*
+    @adminThemeDir {
+        path_regexp admin ^/admin[0-9a-zA-Z]+/themes/.*$
+    }
+    file_server @adminThemeDir
+}
+
 (prestashop) {
     root * /app/prestashop
 
     php_fastcgi localhost:9000
-    file_server
 
+    import prestashop-file_server
     import prestashop-redirects
 
     log {
