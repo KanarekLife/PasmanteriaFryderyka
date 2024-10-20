@@ -1,0 +1,128 @@
+# Redirect rules for PrestaShop pretty URLs
+(prestashop-redirects) {
+    @api {
+        path_regexp api ^/api/?(.*)$
+    }
+    rewrite @api {$REWRITEBASE}/webservice/dispatcher.php?url={re.api.1}&{query}
+
+    rewrite /upload/* {$REWRITEBASE}/index.php
+
+    @image1 {
+        path_regexp img1 ^/([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$
+    }
+    rewrite @image1 {$REWRITEBASE}/img/p/{re.img1.1}/{re.img1.1}{re.img1.2}{re.img1.3}.jpg
+
+    @image2 {
+        path_regexp img2 ^/([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$
+    }
+    rewrite @image2 {$REWRITEBASE}/img/p/{re.img2.1}/{re.img2.2}/{re.img2.1}{re.img2.2}{re.img2.3}{re.img2.4}.jpg
+
+    @image3 {
+        path_regexp img3 ^/([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$
+    }
+    rewrite @image3 {$REWRITEBASE}/img/p/{re.img3.1}/{re.img3.2}/{re.img3.3}/{re.img3.1}{re.img3.2}{re.img3.3}{re.img3.4}{re.img3.5}.jpg
+
+    @image4 {
+        path_regexp img4 ^/([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$
+    }
+    rewrite @image4 {$REWRITEBASE}/img/p/{re.img4.1}/{re.img4.2}/{re.img4.3}/{re.img4.4}/{re.img4.1}{re.img4.2}{re.img4.3}{re.img4.4}{re.img4.5}{re.img4.6}.jpg
+
+    @image5 {
+        path_regexp img5 ^/([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$
+    }
+    rewrite @image5 {$REWRITEBASE}/img/p/{re.img5.1}/{re.img5.2}/{re.img5.3}/{re.img5.4}/{re.img5.5}/{re.img5.1}{re.img5.2}{re.img5.3}{re.img5.4}{re.img5.5}{re.img5.6}{re.img5.7}.jpg
+
+    @image6 {
+        path_regexp img6 ^/([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$
+    }
+    rewrite @image6 {$REWRITEBASE}/img/p/{re.img6.1}/{re.img6.2}/{re.img6.3}/{re.img6.4}/{re.img6.5}/{re.img6.6}/{re.img6.1}{re.img6.2}{re.img6.3}{re.img6.4}{re.img6.5}{re.img6.6}{re.img6.7}{re.img6.8}.jpg
+
+    @image7 {
+        path_regexp img7 ^/([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$
+    }
+    rewrite @image7 {$REWRITEBASE}/img/p/{re.img7.1}/{re.img7.2}/{re.img7.3}/{re.img7.4}/{re.img7.5}/{re.img7.6}/{re.img7.7}/{re.img7.1}{re.img7.2}{re.img7.3}{re.img7.4}{re.img7.5}{re.img7.6}{re.img7.7}{re.img7.8}{re.img7.9}.jpg
+
+    @cImage1 {
+        path_regexp cimg1 ^/c/([0-9]+)(\-[\.*_a-zA-Z0-9-]*)(-[0-9]+)?/.+\.jpg$
+    }
+    rewrite @cImage1 {$REWRITEBASE}/img/c/{re.cimg1.1}{re.cimg1.2}{re.cimg1.3}.jpg
+
+    @cImage2 {
+        path_regexp cimg2 ^/c/([a-zA-Z_-]+)(-[0-9]+)?/.+\.jpg$
+    }
+    rewrite @cImage2 {$REWRITEBASE}/img/c/{re.cimg2.1}{re.cimg2.2}.jpg
+
+    rewrite /images_ie/* {$REWRITEBASE}/js/jquery/plugins/fancybox/images/{1}.{2}
+}
+
+# Static file server for PrestaShop
+(prestashop-file_server) {
+    file_server /img/*
+
+    file_server /themes/*
+
+    @modules {
+        path /modules/*
+        not path /modules/*/vendor/*
+    }
+    file_server @modules 
+
+    file_server /upload/*
+
+    file_server /download/*
+
+    file_server /js/*
+
+    file_server /install/*
+
+    @adminThemeDir {
+        path_regexp admin ^/admin[0-9a-zA-Z]+/themes/.*$
+    }
+    file_server @adminThemeDir
+
+    # Prevent access to sensitive files and directories
+    @hiddenFiles {
+        path_regexp hiddenFiles /\. 
+    }
+    respond @hiddenFiles 403
+
+    @sensitiveFiles {
+        path_regexp sensitiveFiles \.(log|tpl|twig|sass|yml)$
+    }
+    respond @sensitiveFiles 403
+
+    @phpInImg {
+        path /img/*
+        path_regexp phpImg \.php$
+    }
+    respond @phpInImg 403
+
+    @phpInUpload {
+        path /upload/*
+        path_regexp phpUpload \.php$
+    }
+    respond @phpInUpload 403
+}
+
+(prestashop) {
+    root * /app/prestashop
+
+    php_fastcgi localhost:9000
+
+    import prestashop-file_server
+    import prestashop-redirects
+
+    log {
+       format console
+    }
+    encode zstd gzip
+}
+
+http://{$DOMAIN} {
+    import prestashop
+}
+
+https://{$DOMAIN} {
+    import prestashop
+    tls internal
+}

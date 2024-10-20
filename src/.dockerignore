@@ -1,0 +1,6 @@
+prestashop/var/cache
+prestashop/var/logs
+prestashop/var/sessions
+prestashop/var/modules
+prestashop/app/config/parameters.php
+prestashop/config/defines_custom.inc.php
