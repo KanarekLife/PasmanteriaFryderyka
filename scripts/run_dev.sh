@@ -20,6 +20,6 @@ case $ACTION in
     docker compose -f $COMPOSE_FILE build
     ;;
   *)
-    echo "Invalid action $ACTION - expected start|stop|build"
+    echo "Invalid action $ACTION - expected start|run|stop|build"
     ;;
 esac
