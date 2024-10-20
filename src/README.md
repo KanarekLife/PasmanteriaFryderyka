@@ -10,10 +10,13 @@
 
 2. Create `.env` file.
 
-Copy `.env.template` to `.env`. Update secrets - you can use the `generate_secrets.sh` script.
+Copy `.env.template` to `.env` and update secrets - you can also use the `generate_env.sh` script.
 
 ```bash
-../scripts/generate_secrets.sh
+../scripts/generate_env.sh > .env
+# or
+../scripts/generate_env.sh mydomain.com > .env
+# to define the domain for the SSL certificate
 ```
 The `DOMAIN` variable is used to generate the SSL certificate.
 
@@ -28,7 +31,7 @@ docker compose -f docker-compose.dev.yaml up
 ```
 
 > [!TIP]
-> The development environment will mount the `./prestashop` directory to the container.
+> The development environment will mount the `./prestashop` directory to the container. Because of that, the performance on Windows can be very low. It's recommended to store the project on the WSL2 filesystem.
 
 4. Install PrestaShop.
 

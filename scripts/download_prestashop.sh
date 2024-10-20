@@ -1,7 +1,10 @@
 #!/bin/bash
 
+cd "$(dirname "${BASH_SOURCE[0]}")"
+cd ../src
+
 if test -d prestashop; then
-    echo "PrestaShop already installed"
+    echo "PrestaShop already installed in $(pwd)/prestashop"
     exit 0
 fi
 

@@ -5,8 +5,10 @@ generate_password() {
 }
 
 echo "MARIADB_ROOT_PASSWORD=$(generate_password 32)"
+echo "MARIADB_DATABASE=prestashop"
+echo "MARIADB_USER=prestashop-user"
 echo "MARIADB_PASSWORD=$(generate_password 32)"
-echo
+echo "DOMAIN=${1:-localhost}"
 echo "SECRET=$(generate_password 64)"
 echo "COOKIE_KEY=$(generate_password 64)"
 echo "COOKIE_IV=$(generate_password 32)"

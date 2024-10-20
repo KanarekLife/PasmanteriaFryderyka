@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cd "$(dirname "${BASH_SOURCE[0]}")"
+cd ../src
+
 ACTION=$1
 COMPOSE_FILE=${2:-docker-compose.dev.yaml}
 
