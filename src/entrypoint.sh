@@ -7,4 +7,4 @@ envsubst < ./templates/prestashop/config/defines_custom.inc.php > ./prestashop/c
 
 
 caddy start
-php-fpm
+exec php-fpm # without exec, php-fpm will not receive signals

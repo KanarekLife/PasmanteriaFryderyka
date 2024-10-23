@@ -2,7 +2,7 @@ services:
   prestashop-dev:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      target: prestashop-dev
     restart: always
     ports:
       - "8080:80"

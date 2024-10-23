@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM php:7.4-fpm-alpine AS prestashop-base
 
 WORKDIR /app
 
@@ -25,10 +25,20 @@ RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.
 
 EXPOSE 80 443
 
-COPY Caddyfile entrypoint.sh ./
+COPY Caddyfile entrypoint.sh /app/
 
 COPY templates /app/templates
 
+CMD [ "./entrypoint.sh" ]
+
+
+
+FROM prestashop-base AS prestashop
+
 COPY prestashop /app/prestashop
 
-CMD [ "./entrypoint.sh" ]
+
+
+FROM prestashop-base AS prestashop-dev
+
+RUN echo 'php_admin_flag[display_errors] = on' >> /usr/local/etc/php/conf.d/docker-php-logs.ini;

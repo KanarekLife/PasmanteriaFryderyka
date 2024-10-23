@@ -1,6 +1,8 @@
 services:
   prestashop:
-    build: .
+    build:
+      context: .
+      target: prestashop
     restart: always
     ports:
       - "8080:80"
