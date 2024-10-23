@@ -1,0 +1,36 @@
+services:
+  prestashop:
+    build:
+      context: .
+      target: prestashop
+    restart: always
+    ports:
+      - "8080:80"
+      - "8443:443"
+    environment:
+      DB_HOST: prestashop-db
+      DB_NAME: ${MARIADB_DATABASE}
+      DB_USER: ${MARIADB_USER}
+      DB_PASSWORD: ${MARIADB_PASSWORD}
+      DOMAIN: ${DOMAIN}
+      SECRET: ${SECRET}
+      COOKIE_KEY: ${COOKIE_KEY}
+      COOKIE_IV: ${COOKIE_IV}
+      NEW_COOKIE_KEY: ${NEW_COOKIE_KEY}
+      DEV_MODE: "false"
+    depends_on:
+      - prestashop-db
+
+  prestashop-db:
+    image: mariadb:11.5
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - prestashop-db-data:/var/lib/mysql
+
+volumes:
+  prestashop-db-data:
