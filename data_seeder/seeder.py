@@ -24,6 +24,8 @@ STOCK_ENDPOINT = f"{IP_PORT}/api/stock_availables"
 PRODUCTS_IMAGES_ENDPOINT = f"{IP_PORT}/api/images/products"
 
 STOCK_DEFAULT_QUANTITY = 10
+PRODUCT_PER_CATEGORY_LIMIT = 99
+NUMBER_OF_UNAVAILABLE_PRODUCTS = 10
 
 
 def debug_print(s: str):
@@ -182,7 +184,7 @@ class Seeder:
         self.upload_images(product.id, product.images_paths)
         return product
 
-    def read_and_seed(self, product_limit: int = 3):
+    def read_and_seed(self, product_limit: int = 3) -> list[Product]:
         with open(self.__data_json_file, "r") as file:
             categories = json.load(file)
 
@@ -191,6 +193,7 @@ class Seeder:
             for category in categories.values()
             for subcategory in category["subcategories"].values()
         )
+        products = []
         with alive_bar(total_products, title="Importing products") as bar:
             for category_name, category_data in categories.items():
                 category = self.create_category(category_name)
@@ -205,10 +208,21 @@ class Seeder:
                     for i, product in enumerate(subcategory_data["products"]):
                         if i == product_limit:
                             break
-                        self.create_product(product, subcategory)
+                        created_product = self.create_product(product, subcategory)
+                        products.append(created_product)
                         bar()
+        return products
+
+    def zero_stock(self, products: list[Product]):
+        with alive_bar(
+            len(products), title="Setting stock of some products to 0"
+        ) as bar:
+            for product in products:
+                self.patch_stock(product.id, 0)
+                bar()
 
 
 if __name__ == "__main__":
     seeder = Seeder(DATA_DIR)
-    seeder.read_and_seed()
+    created_products = seeder.read_and_seed(product_limit=PRODUCT_PER_CATEGORY_LIMIT)
+    seeder.zero_stock(created_products[:NUMBER_OF_UNAVAILABLE_PRODUCTS])

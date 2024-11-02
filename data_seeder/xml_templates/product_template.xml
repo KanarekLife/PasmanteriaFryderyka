@@ -9,6 +9,7 @@
         <available_for_order>1</available_for_order>
         <show_price>1</show_price>
         <state>1</state>
+        <weight>0.5</weight>
         <name>
             <language id="1"><![CDATA[{{ name }}]]></language>
         </name>
