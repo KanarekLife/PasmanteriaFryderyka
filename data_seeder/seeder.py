@@ -17,7 +17,7 @@ XML_TEMPLATES_DIRNAME = Path(__file__).parent / "xml_templates"
 
 API_KEY = os.environ["PRESTASHOP_API_KEY"]
 
-IP_PORT = "https://localhost:8443"
+IP_PORT = os.environ["SHOP_URL"] if os.environ.get("SHOP_URL") is not None else "https://localhost:8443"
 PRODUCTS_ENDPOINT = f"{IP_PORT}/api/products"
 CATEGORIES_ENDPOINT = f"{IP_PORT}/api/categories"
 STOCK_ENDPOINT = f"{IP_PORT}/api/stock_availables"
@@ -282,9 +282,10 @@ class Seeder:
                                 exit(1)
                             features.append((feature_id, feature_value_id))
                         created_product = self.create_product(product, subcategory, features)
-                        if created_product is None:
-                            exit(1)
-                        products.append(created_product)
+                        if created_product is not None:
+                            products.append(created_product)
+                        else:
+                            print("Skipped product")
                         bar()
         return products
 
@@ -300,4 +301,5 @@ class Seeder:
 if __name__ == "__main__":
     seeder = Seeder(DATA_DIR)
     created_products = seeder.read_and_seed(product_limit=PRODUCT_PER_CATEGORY_LIMIT)
+    print(f"Total products created: {len(created_products)}")
     seeder.zero_stock(created_products[:NUMBER_OF_UNAVAILABLE_PRODUCTS])
