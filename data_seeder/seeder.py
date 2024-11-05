@@ -22,6 +22,9 @@ PRODUCTS_ENDPOINT = f"{IP_PORT}/api/products"
 CATEGORIES_ENDPOINT = f"{IP_PORT}/api/categories"
 STOCK_ENDPOINT = f"{IP_PORT}/api/stock_availables"
 PRODUCTS_IMAGES_ENDPOINT = f"{IP_PORT}/api/images/products"
+PRODUCT_FEATURE_ENDPOINT = f"{IP_PORT}/api/product_features"
+PRODUCT_FEATURE_VALUE_ENDPOINT = f"{IP_PORT}/api/product_feature_values"
+
 
 STOCK_DEFAULT_QUANTITY = 10
 PRODUCT_PER_CATEGORY_LIMIT = 99
@@ -105,6 +108,8 @@ class Seeder:
         self.__session = requests.Session()
         self.__session.verify = False
         self.__session.auth = requests.auth.HTTPBasicAuth(API_KEY, "")
+        self.__product_features = {} # dict of feature_name -> feature_id
+        self.__product_feature_values = {} # dict of feature_id -> dict of feature_value_name -> feature_value_id
 
     def patch_stock(self, product_id: int, stock: int):
         stock_xml = self.__session.get(
@@ -168,12 +173,70 @@ class Seeder:
         debug_print(f"Subcategory {subcategory.name} created")
         return subcategory
 
-    def create_product(self, product_json: dict, category: Category) -> Product:
+    # Returns created or existing feature id
+    def create_product_feature_if_not_exists(self, name: str) -> int:
+        if name in self.__product_features:
+            return self.__product_features[name]
+        feature_xml = ShopItem.jinja_env.get_template("create_product_feature_template.xml").render(
+            feature_name=name
+        )
+        response = self.__session.post(
+            PRODUCT_FEATURE_ENDPOINT,
+            data=feature_xml.encode("utf-8"),
+        )
+        if not response.ok:
+            print(f"Failed to create feature {name} with {response.text}")
+            return None
+        root = ET.fromstring(response.text)
+        feature_id = int(root.find("product_feature/id").text)
+        self.__product_features[name] = feature_id
+        debug_print(f"Feature {name} created")
+        return feature_id
+    
+    # Returns created or existing feature value id
+    def create_product_feature_value_if_not_exists(self, feature_id: int, value: str) -> int:
+        if feature_id in self.__product_feature_values and value in self.__product_feature_values[feature_id]:
+            return self.__product_feature_values[feature_id][value]
+        feature_value_xml = ShopItem.jinja_env.get_template("create_product_feature_value_template.xml").render(
+            feature_id=feature_id,
+            value=value
+        )
+        response = self.__session.post(
+            PRODUCT_FEATURE_VALUE_ENDPOINT,
+            data=feature_value_xml.encode("utf-8"),
+        )
+        if not response.ok:
+            print(f"Failed to create feature value {value} with {response.text}")
+            return None
+        root = ET.fromstring(response.text)
+        feature_value_id = int(root.find("product_feature_value/id").text)
+        if feature_id not in self.__product_feature_values:
+            self.__product_feature_values[feature_id] = {}
+        self.__product_feature_values[feature_id][value] = feature_value_id
+        debug_print(f"Feature value {value} created")
+        return feature_value_id
+
+    def create_product(self, product_json: dict, category: Category, features: list[(int, int)]) -> Product:
         product = Product(product_json, category)
-        product_xml = product.to_xml()
+        product_xml_from_template = product.to_xml()
+        product_xml = ET.fromstring(product_xml_from_template)
+        associations = product_xml.find("product/associations")
+        # associate product with features
+        features_xml = ET.Element("product_features")
+        for feature_id, feature_value_id in features:
+            feature_xml = ET.Element("product_feature")
+            feature_id_xml = ET.Element("id")
+            feature_id_xml.text = str(feature_id)
+            feature_value_xml = ET.Element("id_feature_value")
+            feature_value_xml.text = str(feature_value_id)
+            feature_xml.append(feature_id_xml)
+            feature_xml.append(feature_value_xml)
+            features_xml.append(feature_xml)
+        associations.append(features_xml)
+        product_xml_str = ET.tostring(product_xml, encoding="unicode")
         response = self.__session.post(
             PRODUCTS_ENDPOINT,
-            data=product_xml.encode("utf-8"),
+            data=product_xml_str.encode("utf-8"),
         )
         if not response.ok:
             print(f"Failed to create product {product.name} with {response.text}")
@@ -208,7 +271,19 @@ class Seeder:
                     for i, product in enumerate(subcategory_data["products"]):
                         if i == product_limit:
                             break
-                        created_product = self.create_product(product, subcategory)
+                        features = []
+                        for feature_name, feature_value in product["other_qualities"].items():
+                            feature_value = feature_value.split(",")[0] # fix for multiple feature values for a single product, which are supposed to be a bug
+                            feature_id = self.create_product_feature_if_not_exists(feature_name)
+                            if feature_id is None:
+                                exit(1)
+                            feature_value_id = self.create_product_feature_value_if_not_exists(feature_id, feature_value)
+                            if feature_value_id is None:
+                                exit(1)
+                            features.append((feature_id, feature_value_id))
+                        created_product = self.create_product(product, subcategory, features)
+                        if created_product is None:
+                            exit(1)
                         products.append(created_product)
                         bar()
         return products

@@ -2,6 +2,7 @@ from seeder import (
     API_KEY,
     CATEGORIES_ENDPOINT,
     PRODUCTS_ENDPOINT,
+    PRODUCT_FEATURE_ENDPOINT
 )
 import requests
 import xml.etree.ElementTree as ET
@@ -29,6 +30,17 @@ def remove_all():
             id = product.attrib["id"]
             debug_print(f"Deleting product with id {id}")
             session.delete(f"{PRODUCTS_ENDPOINT}/{id}")
+            bar()
+    
+    # Product features
+    product_features_xml = session.get(PRODUCT_FEATURE_ENDPOINT).text
+    root = ET.fromstring(product_features_xml)
+    product_features = root.findall("product_features/product_feature")
+    with alive_bar(len(product_features), title="Deleting product features") as bar:
+        for product_feature in product_features:
+            id = product_feature.attrib["id"]
+            debug_print(f"Deleting product feature with id {id}")
+            session.delete(f"{PRODUCT_FEATURE_ENDPOINT}/{id}")
             bar()
 
     # Categories
