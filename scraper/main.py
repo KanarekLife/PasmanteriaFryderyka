@@ -117,7 +117,8 @@ class Scraper:
         name = product_root.xpath('/html/body/main/section/div/div/div/section/div[1]/div[2]/h1/text()')[0].strip()
         price = float(product_root.xpath('/html/body/main/section/div/div/div/section/div[1]/div[2]/div[1]/div[1]/div/span/@content')[0])
         image_urls = product_root.xpath('/html/body/main/section/div/div/div/section/div[1]/div[1]/section/div[1]/div[2]/ul/li/img/@data-image-large-src')
-        description = product_root.xpath('/html/body/main/section/div/div/div/section/div[1]/div[3]/div/div[1]/div')[0].text_content().strip()
+        description_html_tags = product_root.xpath('/html/body/main/section/div/div/div/section/div[1]/div[3]/div/div[1]/div/*')
+        description = ''.join([html.tostring(element, method='html', encoding='unicode').strip() for element in description_html_tags])
 
         other_qualities_keys = product_root.xpath('/html/body/main/section/div/div/div/section/div[1]/div[3]/div/div[2]/section/dl/dt/text()')
         other_qualities_values = product_root.xpath('/html/body/main/section/div/div/div/section/div[1]/div[3]/div/div[2]/section/dl/dd/text()')
