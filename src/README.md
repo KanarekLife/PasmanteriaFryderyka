@@ -45,3 +45,13 @@ If you want to change the domain the shop is available at, you have to update it
 
 > [!CAUTION]
 > This method is not ready - we need a method to save the database and the files in the repository.
+
+[HOW TO BACKUP AND IMPORT DATABASES]
+create backup:
+```bash
+../scripts/backup_dev.sh create # dump all databases to /database-backup/ directory
+```
+import backup:
+```bash
+../scripts/backup_dev.sh import ./database-backup/all-db-backup-1731065240.sql # import databases from ./database-backup/all-db-backup-1731065240.sql
+```
