@@ -18,6 +18,7 @@ Copy `.env.template` to `.env` and update secrets - you can also use the `genera
 ../scripts/generate_env.sh mydomain.com > .env
 # to define the domain for the SSL certificate
 ```
+
 The `DOMAIN` variable is used to generate the SSL certificate.
 
 3. Run the development environment.
@@ -25,7 +26,9 @@ The `DOMAIN` variable is used to generate the SSL certificate.
 ```bash
 ../scripts/run_dev.sh run # other commands: start, build, stop
 ```
-or 
+
+or
+
 ```bash
 docker compose -f docker-compose.dev.yaml up
 ```
@@ -35,7 +38,7 @@ docker compose -f docker-compose.dev.yaml up
 
 4. Install PrestaShop.
 
-Follow the installation steps in your browser. By default, PrestaShop installer will be available at `https://localhost:8443/install`. 
+Follow the installation steps in your browser. By default, PrestaShop installer will be available at `https://localhost:8443/install`.
 
 5. Remove the `install` directory.
 
@@ -45,3 +48,21 @@ If you want to change the domain the shop is available at, you have to update it
 
 > [!CAUTION]
 > This method is not ready - we need a method to save the database and the files in the repository.
+
+## Database export/import
+
+#### Export/backup
+
+Run below command to export database into db_backup folder:
+
+```bash
+../scripts/run_dev.sh backup
+```
+
+#### Import/restore
+
+Run below command to import `backup.sql` file from db_backup folder:
+
+```bash
+../scripts/run_dev.sh restore
+```
