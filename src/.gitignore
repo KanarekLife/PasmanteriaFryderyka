@@ -1,4 +1,4 @@
-.env
+/.env
 prestashop/app/config/parameters.php
 prestashop/config/defines_custom.inc.php
 prestashop/var/cache/dev/smarty
