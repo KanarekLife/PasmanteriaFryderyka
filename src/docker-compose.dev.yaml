@@ -34,5 +34,21 @@ services:
     volumes:
       - prestashop-db-data:/var/lib/mysql
 
+  prestashop-db-backup-restore:
+    image: mariadb:11.5
+    restart: on-failure
+    environment:
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_HOST: ${MARIADB_HOST}
+    volumes:
+      - ./db_backup:/app/db_backup
+    depends_on:
+      - prestashop-db
+    command:
+      - /app/db_backup/entrypoint.sh
+    working_dir: /app/db_backup
+
 volumes:
   prestashop-db-data:

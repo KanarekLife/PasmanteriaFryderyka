@@ -35,7 +35,7 @@ CMD [ "./entrypoint.sh" ]
 
 FROM prestashop-base AS prestashop
 
-COPY prestashop /app/prestashop
+COPY --chown=www-data:www-data --chmod=755 prestashop /app/prestashop
 
 
 
