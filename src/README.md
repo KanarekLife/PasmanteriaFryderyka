@@ -46,8 +46,9 @@ If you want to change the domain the shop is available at, you have to update it
 
 #### From source in this repository
 
-> [!CAUTION]
-> This method is not ready - we need a method to save the database and the files in the repository.
+1. Create `.env` file. [See second step from upper section](#from-scratch)
+2. Run the development environment. [See third step from upper section](#from-scratch)
+3. Use [database import procedure.](#import/restore)
 
 ## Database export/import
 
