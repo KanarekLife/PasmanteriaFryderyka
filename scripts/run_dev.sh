@@ -7,17 +7,16 @@ ACTION=$1
 COMPOSE_FILE=${2:-docker-compose.dev.yaml}
 
 case $ACTION in
-  start)
+  up)
     docker compose -f $COMPOSE_FILE up -d prestashop-dev
+    echo "Prestashop URL: https://localhost:8443"
+    echo "Admin URL: https://localhost:8443/$(ls prestashop | grep admin)"
     ;;
-  run)
-    docker compose -f $COMPOSE_FILE up prestashop-dev
-    ;;
-  stop)
-    docker compose -f $COMPOSE_FILE down prestashop-dev
+  down)
+    docker compose -f $COMPOSE_FILE down
     ;;
   build)
-    docker compose -f $COMPOSE_FILE build prestashop-dev
+    docker compose -f $COMPOSE_FILE build
     ;;
   backup)
     docker compose -f $COMPOSE_FILE run -e OPERATION=backup --rm prestashop-db-backup-restore
@@ -26,6 +25,6 @@ case $ACTION in
     docker compose -f $COMPOSE_FILE run -e OPERATION=restore --rm prestashop-db-backup-restore
     ;;
   *)
-    echo "Invalid action $ACTION - expected start|run|stop|build"
+    echo "Invalid action $ACTION - expected up|down|build|backup|restore"
     ;;
 esac

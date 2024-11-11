@@ -24,7 +24,7 @@ The `DOMAIN` variable is used to generate the SSL certificate.
 3. Run the development environment.
 
 ```bash
-../scripts/run_dev.sh run # other commands: start, build, stop
+../scripts/run_dev.sh up # other commands: up, down, build
 ```
 
 or
@@ -46,9 +46,30 @@ If you want to change the domain the shop is available at, you have to update it
 
 #### From source in this repository
 
-1. Create `.env` file. [See second step from upper section](#from-scratch)
-2. Run the development environment. [See third step from upper section](#from-scratch)
-3. Use [database import procedure.](#import/restore)
+1. Create `.env` file.
+Copy `.env.template` to `.env` and update secrets - you can also use the `generate_env.sh` script.
+
+```bash
+../scripts/generate_env.sh > .env
+# or
+../scripts/generate_env.sh mydomain.com > .env
+# to define the domain for the SSL certificate
+```
+2. Run the development environment.
+```bash
+../scripts/run_dev.sh up # other commands: up, down, build
+```
+
+or
+
+```bash
+docker compose -f docker-compose.dev.yaml up
+```
+
+3. Import database from backup.
+```bash
+../scripts/run_dev.sh restore
+```
 
 ## Database export/import
 

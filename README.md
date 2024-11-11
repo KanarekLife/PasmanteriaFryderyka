@@ -2,6 +2,10 @@
 
 Web-shop project for the "Electronic Business" course at the Technical University of Gdańsk. Shop is based on [PrestaShop 1.7](https://github.com/PrestaShop/PrestaShop/tree/1.7.8.x) and utilizes data from [twojapasmanteria.pl](https://www.twojapasmanteria.pl/).
 
+## README files of components
+1. [How to run](src/README.md)
+2. [Data seeder](data_seeder/README.md)
+
 ## Team members
 
 - [Filip Dawidowski](https://github.com/fildaw)
