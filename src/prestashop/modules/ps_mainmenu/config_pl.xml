@@ -2,7 +2,7 @@
 <module>
     <name>ps_mainmenu</name>
     <displayName><![CDATA[Menu gł&oacute;wne]]></displayName>
-    <version><![CDATA[2.3.2]]></version>
+    <version><![CDATA[2.3.4]]></version>
     <description><![CDATA[Ułatw odwiedzającym znalezienie drogi w Twoim sklepie, wybierz odpowiedni link i zamień go w pozycję menu.]]></description>
     <author><![CDATA[PrestaShop]]></author>
     <tab><![CDATA[front_office_features]]></tab>

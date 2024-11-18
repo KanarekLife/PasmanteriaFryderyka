@@ -2,7 +2,7 @@
 <module>
     <name>ps_socialfollow</name>
     <displayName><![CDATA[Odnośniki do medi&oacute;w społecznościowych]]></displayName>
-    <version><![CDATA[2.3.0]]></version>
+    <version><![CDATA[2.3.2]]></version>
     <description><![CDATA[Facebook, Twitter, niech Twoi klienci wiedzą, gdzie Cię obserwować i zwiększyć swoją społeczność.]]></description>
     <author><![CDATA[PrestaShop]]></author>
     <tab><![CDATA[advertising_marketing]]></tab>
