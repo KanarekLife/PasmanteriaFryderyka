@@ -11,6 +11,7 @@ case $ACTION in
     docker compose -f $COMPOSE_FILE up -d prestashop-dev
     echo "Prestashop URL: https://localhost:8443"
     echo "Admin URL: https://localhost:8443/$(ls prestashop | grep admin)"
+    echo "Admin credentials: freddy@fazbear.com | freddyfazbear"
     ;;
   down)
     docker compose -f $COMPOSE_FILE down

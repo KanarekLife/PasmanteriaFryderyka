@@ -10,7 +10,7 @@
 
 2. Create `.env` file.
 
-Copy `.env.template` to `.env` and update secrets - you can also use the `generate_env.sh` script.
+Copy `.env.template` to `.env` and update secrets - you can also use the `generate_env.sh` script. Remember to change the SMTP credentials afterwards.
 
 ```bash
 ../scripts/generate_env.sh > .env
