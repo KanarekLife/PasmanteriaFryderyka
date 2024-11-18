@@ -19,7 +19,7 @@ Copy `.env.template` to `.env` and update secrets - you can also use the `genera
 # to define the domain for the SSL certificate
 ```
 
-The `DOMAIN` variable is used to generate the SSL certificate.
+The `DOMAIN` variable is used to generate the SSL certificate and `PRESTASHOP_URL` is the address for Prestashop redirects. It most likely should be the same as `DOMAIN` with port prefix.
 
 3. Run the development environment.
 
