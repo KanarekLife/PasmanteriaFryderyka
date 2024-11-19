@@ -4944,7 +4944,7 @@ CREATE TABLE `ps_configuration` (
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=572 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=574 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4982,15 +4982,15 @@ INSERT INTO `ps_configuration` VALUES
 (26,NULL,NULL,'PS_TAX','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (27,NULL,NULL,'PS_SHOP_ENABLE','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (28,NULL,NULL,'PS_NB_DAYS_NEW_PRODUCT','0','0000-00-00 00:00:00','2024-11-18 21:18:03'),
-(29,NULL,NULL,'PS_SSL_ENABLED','1','0000-00-00 00:00:00','2024-11-09 12:35:29'),
+(29,NULL,NULL,'PS_SSL_ENABLED','1','0000-00-00 00:00:00','2024-11-19 14:07:47'),
 (30,NULL,NULL,'PS_WEIGHT_UNIT','kg','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (31,NULL,NULL,'PS_BLOCK_CART_AJAX','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (32,NULL,NULL,'PS_ORDER_RETURN','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (33,NULL,NULL,'PS_ORDER_RETURN_NB_DAYS','14','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (34,NULL,NULL,'PS_MAIL_TYPE','3','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (35,NULL,NULL,'PS_PRODUCT_PICTURE_MAX_SIZE','8388608','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(36,NULL,NULL,'PS_PRODUCT_PICTURE_WIDTH','64','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(37,NULL,NULL,'PS_PRODUCT_PICTURE_HEIGHT','64','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(36,NULL,NULL,'PS_PRODUCT_PICTURE_WIDTH','224','0000-00-00 00:00:00','2024-11-19 13:46:38'),
+(37,NULL,NULL,'PS_PRODUCT_PICTURE_HEIGHT','280','0000-00-00 00:00:00','2024-11-19 13:46:38'),
 (38,NULL,NULL,'PS_INVOICE_PREFIX','#IN','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (39,NULL,NULL,'PS_INVCE_INVOICE_ADDR_RULES','{\"avoid\":[]}','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (40,NULL,NULL,'PS_INVCE_DELIVERY_ADDR_RULES','{\"avoid\":[]}','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -5040,7 +5040,7 @@ INSERT INTO `ps_configuration` VALUES
 (84,NULL,NULL,'PS_STOCK_MVT_REASON_DEFAULT','3','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (85,NULL,NULL,'PS_SPECIFIC_PRICE_PRIORITIES','id_shop;id_currency;id_country;id_group','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (86,NULL,NULL,'PS_TAX_DISPLAY','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(87,NULL,NULL,'PS_SMARTY_FORCE_COMPILE','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(87,NULL,NULL,'PS_SMARTY_FORCE_COMPILE','1','0000-00-00 00:00:00','2024-11-19 14:10:51'),
 (88,NULL,NULL,'PS_DISTANCE_UNIT','km','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (89,NULL,NULL,'PS_STORES_DISPLAY_CMS','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (90,NULL,NULL,'SHOP_LOGO_WIDTH','400','0000-00-00 00:00:00','2024-11-18 18:59:35'),
@@ -5056,12 +5056,12 @@ INSERT INTO `ps_configuration` VALUES
 (100,NULL,NULL,'PS_LOCALE_LANGUAGE','pl','0000-00-00 00:00:00','2024-11-09 12:35:29'),
 (101,NULL,NULL,'PS_LOCALE_COUNTRY','pl','0000-00-00 00:00:00','2024-11-09 12:35:29'),
 (102,NULL,NULL,'PS_ATTACHMENT_MAXIMUM_SIZE','50','0000-00-00 00:00:00','2024-11-16 21:16:37'),
-(103,NULL,NULL,'PS_SMARTY_CACHE',NULL,'0000-00-00 00:00:00','2024-11-17 00:28:09'),
+(103,NULL,NULL,'PS_SMARTY_CACHE',NULL,'0000-00-00 00:00:00','2024-11-19 14:10:51'),
 (104,NULL,NULL,'PS_DIMENSION_UNIT','cm','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (105,NULL,NULL,'PS_GUEST_CHECKOUT_ENABLED','1','0000-00-00 00:00:00','2024-11-16 21:05:45'),
-(106,NULL,NULL,'PS_DISPLAY_SUPPLIERS','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(107,NULL,NULL,'PS_DISPLAY_MANUFACTURERS','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(108,NULL,NULL,'PS_DISPLAY_BEST_SELLERS','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(106,NULL,NULL,'PS_DISPLAY_SUPPLIERS',NULL,'0000-00-00 00:00:00','2024-11-19 14:07:47'),
+(107,NULL,NULL,'PS_DISPLAY_MANUFACTURERS','1','0000-00-00 00:00:00','2024-11-19 14:07:47'),
+(108,NULL,NULL,'PS_DISPLAY_BEST_SELLERS','1','0000-00-00 00:00:00','2024-11-19 14:07:47'),
 (109,NULL,NULL,'PS_CATALOG_MODE','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (110,NULL,NULL,'PS_GEOLOCATION_WHITELIST','127;::1;188.165.122;209.185.108;209.185.253;209.85.238;209.85.238.11;209.85.238.4;216.239.33.96;216.239.33.97;216.239.33.98;216.239.33.99;216.239.37.98;216.239.37.99;216.239.39.98;216.239.39.99;216.239.41.96;216.239.41.97;216.239.41.98;216.239.41.99;216.239.45.4;216.239.46;216.239.51.96;216.239.51.97;216.239.51.98;216.239.51.99;216.239.53.98;216.239.53.99;216.239.57.96;91.240.109;216.239.57.97;216.239.57.98;216.239.57.99;216.239.59.98;216.239.59.99;216.33.229.163;64.233.173.193;64.233.173.194;64.233.173.195;64.233.173.196;64.233.173.197;64.233.173.198;64.233.173.199;64.233.173.200;64.233.173.201;64.233.173.202;64.233.173.203;64.233.173.204;64.233.173.205;64.233.173.206;64.233.173.207;64.233.173.208;64.233.173.209;64.233.173.210;64.233.173.211;64.233.173.212;64.233.173.213;64.233.173.214;64.233.173.215;64.233.173.216;64.233.173.217;64.233.173.218;64.233.173.219;64.233.173.220;64.233.173.221;64.233.173.222;64.233.173.223;64.233.173.224;64.233.173.225;64.233.173.226;64.233.173.227;64.233.173.228;64.233.173.229;64.233.173.230;64.233.173.231;64.233.173.232;64.233.173.233;64.233.173.234;64.233.173.235;64.233.173.236;64.233.173.237;64.233.173.238;64.233.173.239;64.233.173.240;64.233.173.241;64.233.173.242;64.233.173.243;64.233.173.244;64.233.173.245;64.233.173.246;64.233.173.247;64.233.173.248;64.233.173.249;64.233.173.250;64.233.173.251;64.233.173.252;64.233.173.253;64.233.173.254;64.233.173.255;64.68.80;64.68.81;64.68.82;64.68.83;64.68.84;64.68.85;64.68.86;64.68.87;64.68.88;64.68.89;64.68.90.1;64.68.90.10;64.68.90.11;64.68.90.12;64.68.90.129;64.68.90.13;64.68.90.130;64.68.90.131;64.68.90.132;64.68.90.133;64.68.90.134;64.68.90.135;64.68.90.136;64.68.90.137;64.68.90.138;64.68.90.139;64.68.90.14;64.68.90.140;64.68.90.141;64.68.90.142;64.68.90.143;64.68.90.144;64.68.90.145;64.68.90.146;64.68.90.147;64.68.90.148;64.68.90.149;64.68.90.15;64.68.90.150;64.68.90.151;64.68.90.152;64.68.90.153;64.68.90.154;64.68.90.155;64.68.90.156;64.68.90.157;64.68.90.158;64.68.90.159;64.68.90.16;64.68.90.160;64.68.90.161;64.68.90.162;64.68.90.163;64.68.90.164;64.68.90.165;64.68.90.166;64.68.90.167;64.68.90.168;64.68.90.169;64.68.90.17;64.68.90.170;64.68.90.171;64.68.90.172;64.68.90.173;64.68.90.174;64.68.90.175;64.68.90.176;64.68.90.177;64.68.90.178;64.68.90.179;64.68.90.18;64.68.90.180;64.68.90.181;64.68.90.182;64.68.90.183;64.68.90.184;64.68.90.185;64.68.90.186;64.68.90.187;64.68.90.188;64.68.90.189;64.68.90.19;64.68.90.190;64.68.90.191;64.68.90.192;64.68.90.193;64.68.90.194;64.68.90.195;64.68.90.196;64.68.90.197;64.68.90.198;64.68.90.199;64.68.90.2;64.68.90.20;64.68.90.200;64.68.90.201;64.68.90.202;64.68.90.203;64.68.90.204;64.68.90.205;64.68.90.206;64.68.90.207;64.68.90.208;64.68.90.21;64.68.90.22;64.68.90.23;64.68.90.24;64.68.90.25;64.68.90.26;64.68.90.27;64.68.90.28;64.68.90.29;64.68.90.3;64.68.90.30;64.68.90.31;64.68.90.32;64.68.90.33;64.68.90.34;64.68.90.35;64.68.90.36;64.68.90.37;64.68.90.38;64.68.90.39;64.68.90.4;64.68.90.40;64.68.90.41;64.68.90.42;64.68.90.43;64.68.90.44;64.68.90.45;64.68.90.46;64.68.90.47;64.68.90.48;64.68.90.49;64.68.90.5;64.68.90.50;64.68.90.51;64.68.90.52;64.68.90.53;64.68.90.54;64.68.90.55;64.68.90.56;64.68.90.57;64.68.90.58;64.68.90.59;64.68.90.6;64.68.90.60;64.68.90.61;64.68.90.62;64.68.90.63;64.68.90.64;64.68.90.65;64.68.90.66;64.68.90.67;64.68.90.68;64.68.90.69;64.68.90.7;64.68.90.70;64.68.90.71;64.68.90.72;64.68.90.73;64.68.90.74;64.68.90.75;64.68.90.76;64.68.90.77;64.68.90.78;64.68.90.79;64.68.90.8;64.68.90.80;64.68.90.9;64.68.91;64.68.92;66.249.64;66.249.65;66.249.66;66.249.67;66.249.68;66.249.69;66.249.70;66.249.71;66.249.72;66.249.73;66.249.78;66.249.79;72.14.199;8.6.48','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (111,NULL,NULL,'PS_LOGS_BY_EMAIL','4','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -5087,8 +5087,8 @@ INSERT INTO `ps_configuration` VALUES
 (131,NULL,NULL,'PS_OS_COD_VALIDATION','13','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (132,NULL,NULL,'PS_LEGACY_IMAGES','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (133,NULL,NULL,'PS_IMAGE_QUALITY','png','0000-00-00 00:00:00','2024-11-09 12:36:09'),
-(134,NULL,NULL,'PS_PNG_QUALITY','7','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(135,NULL,NULL,'PS_JPEG_QUALITY','90','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(134,NULL,NULL,'PS_PNG_QUALITY','0','0000-00-00 00:00:00','2024-11-19 13:56:02'),
+(135,NULL,NULL,'PS_JPEG_QUALITY','100','0000-00-00 00:00:00','2024-11-19 13:45:24'),
 (136,NULL,NULL,'PS_COOKIE_LIFETIME_FO','480','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (137,NULL,NULL,'PS_COOKIE_LIFETIME_BO','480','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (138,NULL,NULL,'PS_RESTRICT_DELIVERED_COUNTRIES','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -5145,7 +5145,7 @@ INSERT INTO `ps_configuration` VALUES
 (189,NULL,NULL,'MANUFACTURER_DISPLAY_TEXT','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (190,NULL,NULL,'MANUFACTURER_DISPLAY_TEXT_NB','5','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (191,NULL,NULL,'NEW_PRODUCTS_NBR','5','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(192,NULL,NULL,'PS_TOKEN_ENABLE','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(192,NULL,NULL,'PS_TOKEN_ENABLE','1','0000-00-00 00:00:00','2024-11-19 14:07:47'),
 (193,NULL,NULL,'PS_STATS_RENDER','graphnvd3','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (194,NULL,NULL,'PS_STATS_OLD_CONNECT_AUTO_CLEAN','never','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (195,NULL,NULL,'PS_STATS_GRID_RENDER','gridhtml','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -5217,9 +5217,9 @@ INSERT INTO `ps_configuration` VALUES
 (261,NULL,NULL,'PS_ATTRIBUTE_ANCHOR_SEPARATOR','-','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (262,NULL,NULL,'CONF_AVERAGE_PRODUCT_MARGIN','40','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (263,NULL,NULL,'PS_DASHBOARD_SIMULATION','0','0000-00-00 00:00:00','2024-11-16 22:26:01'),
-(264,NULL,NULL,'PS_USE_HTMLPURIFIER','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(264,NULL,NULL,'PS_USE_HTMLPURIFIER','1','0000-00-00 00:00:00','2024-11-19 14:07:47'),
 (265,NULL,NULL,'PS_SMARTY_CACHING_TYPE','filesystem','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(266,NULL,NULL,'PS_SMARTY_LOCAL',NULL,'0000-00-00 00:00:00','2024-11-17 00:28:09'),
+(266,NULL,NULL,'PS_SMARTY_LOCAL',NULL,'0000-00-00 00:00:00','2024-11-19 14:10:51'),
 (267,NULL,NULL,'PS_SMARTY_CLEAR_CACHE','everytime','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (268,NULL,NULL,'PS_DETECT_LANG','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (269,NULL,NULL,'PS_DETECT_COUNTRY','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -5245,7 +5245,7 @@ INSERT INTO `ps_configuration` VALUES
 (289,NULL,NULL,'PS_LOGS_EMAIL_RECEIVERS','freddy@fazbear.com','0000-00-00 00:00:00','2024-11-09 12:35:30'),
 (290,NULL,NULL,'PS_SHOW_LABEL_OOS_LISTING_PAGES','1','0000-00-00 00:00:00','2024-11-18 21:18:07'),
 (291,NULL,NULL,'ADDONS_API_MODULE_CHANNEL','stable','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(292,NULL,NULL,'PS_SSL_ENABLED_EVERYWHERE','1','2024-11-09 12:35:29','2024-11-09 12:35:29'),
+(292,NULL,NULL,'PS_SSL_ENABLED_EVERYWHERE','1','2024-11-09 12:35:29','2024-11-19 14:07:47'),
 (293,NULL,NULL,'blockwishlist_WishlistPageName',NULL,'2024-11-09 12:35:31','2024-11-09 12:35:31'),
 (294,NULL,NULL,'blockwishlist_WishlistDefaultTitle',NULL,'2024-11-09 12:35:31','2024-11-09 12:35:31'),
 (295,NULL,NULL,'blockwishlist_CreateButtonLabel',NULL,'2024-11-09 12:35:31','2024-11-09 12:35:31'),
@@ -5413,7 +5413,7 @@ INSERT INTO `ps_configuration` VALUES
 (458,NULL,NULL,'PS_PSX_FIREBASE_REFRESH_DATE','2024-11-16 21:30:27','2024-11-16 21:30:27','2024-11-16 21:30:27'),
 (459,NULL,NULL,'PS_ACCOUNTS_FIREBASE_ID_TOKEN',NULL,'2024-11-16 21:30:27','2024-11-16 21:30:27'),
 (460,NULL,NULL,'PS_ACCOUNTS_ACCESS_TOKEN',NULL,'2024-11-16 21:30:27','2024-11-16 21:30:27'),
-(461,NULL,NULL,'PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN',NULL,'2024-11-16 21:51:06','2024-11-19 12:46:25'),
+(461,NULL,NULL,'PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN',NULL,'2024-11-16 21:51:06','2024-11-19 13:53:18'),
 (462,NULL,NULL,'CONF_PAYPAL_FIXED','0.2','2024-11-16 21:54:06','2024-11-16 21:54:06'),
 (463,NULL,NULL,'CONF_PAYPAL_VAR','2','2024-11-16 21:54:06','2024-11-16 21:54:06'),
 (464,NULL,NULL,'CONF_PAYPAL_FIXED_FOREIGN','0.2','2024-11-16 21:54:06','2024-11-16 21:54:06'),
@@ -5523,7 +5523,9 @@ INSERT INTO `ps_configuration` VALUES
 (568,NULL,NULL,'PS_LABEL_DELIVERY_TIME_AVAILABLE',NULL,'2024-11-18 19:43:01','2024-11-18 19:43:01'),
 (569,NULL,NULL,'PS_LABEL_DELIVERY_TIME_OOSBOA',NULL,'2024-11-18 19:43:01','2024-11-18 19:43:01'),
 (570,NULL,NULL,'HOME_FEATURED_RANDOMIZE',NULL,'2024-11-18 20:12:04','2024-11-18 20:12:26'),
-(571,NULL,NULL,'PS_SHOWCASECARD_CATEGORIES_CLOSED','1','2024-11-18 20:23:31','2024-11-18 20:23:31');
+(571,NULL,NULL,'PS_SHOWCASECARD_CATEGORIES_CLOSED','1','2024-11-18 20:23:31','2024-11-18 20:23:31'),
+(572,NULL,NULL,'PS_IMAGE_GENERATION_METHOD','0','2024-11-19 13:45:24','2024-11-19 13:45:24'),
+(573,NULL,NULL,'PS_HIGHT_DPI','1','2024-11-19 13:45:24','2024-11-19 13:45:24');
 /*!40000 ALTER TABLE `ps_configuration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5734,7 +5736,7 @@ CREATE TABLE `ps_connections` (
   KEY `id_guest` (`id_guest`),
   KEY `date_add` (`date_add`),
   KEY `id_page` (`id_page`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5755,7 +5757,8 @@ INSERT INTO `ps_connections` VALUES
 (9,1,1,2,2,2886860801,'2024-11-18 19:26:56',''),
 (10,1,1,2,2,2886860801,'2024-11-18 20:34:32',''),
 (11,1,1,2,1,2886860801,'2024-11-18 21:07:23',''),
-(12,1,1,2,1,2886860801,'2024-11-19 12:48:51','');
+(12,1,1,2,1,2886860801,'2024-11-19 12:48:51',''),
+(13,1,1,2,2,2886860801,'2024-11-19 13:41:50','');
 /*!40000 ALTER TABLE `ps_connections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5803,7 +5806,7 @@ CREATE TABLE `ps_connections_source` (
   KEY `orderby` (`date_add`),
   KEY `http_referer` (`http_referer`),
   KEY `request_uri` (`request_uri`)
-) ENGINE=InnoDB AUTO_INCREMENT=284 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=306 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6095,7 +6098,29 @@ INSERT INTO `ps_connections_source` VALUES
 (280,12,'https://localhost:8443/szukaj?controller=search&s=paper+yarn','localhost:8443/','','2024-11-19 12:51:30'),
 (281,12,'https://localhost:8443/szukaj?controller=search&s=paper+yarn','localhost:8443/','','2024-11-19 12:52:18'),
 (282,12,'https://localhost:8443/szukaj?controller=search&s=paper+yarn','localhost:8443/','','2024-11-19 12:55:41'),
-(283,12,'https://localhost:8443/szukaj?controller=search&s=paper+yarn','localhost:8443/','','2024-11-19 12:55:42');
+(283,12,'https://localhost:8443/szukaj?controller=search&s=paper+yarn','localhost:8443/','','2024-11-19 12:55:42'),
+(284,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:43:24'),
+(285,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:45:39'),
+(286,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:45:41'),
+(287,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:45:42'),
+(288,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:45:43'),
+(289,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:45:43'),
+(290,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:45:43'),
+(291,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:45:44'),
+(292,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:46:41'),
+(293,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:46:42'),
+(294,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:56:22'),
+(295,12,'https://localhost:8443/14-kordonki','localhost:8443/kordonek-sparkle-yarnart/629-kordonek-metaliczny-sparkle-niebieski-1318-1645095059327.html','','2024-11-19 13:56:27'),
+(296,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:56:32'),
+(297,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:56:35'),
+(298,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:56:36'),
+(299,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:56:36'),
+(300,12,'https://localhost:8443/14-kordonki','localhost:8443/kordonek-sparkle-yarnart/629-kordonek-metaliczny-sparkle-niebieski-1318-1645095059327.html','','2024-11-19 13:57:15'),
+(301,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:57:25'),
+(302,12,'https://localhost:8443/','localhost:8443/14-kordonki','','2024-11-19 13:57:39'),
+(303,12,'https://localhost:8443/14-kordonki','localhost:8443/3-wloczki','','2024-11-19 13:57:47'),
+(304,12,'https://localhost:8443/14-kordonki','localhost:8443/3-wloczki','','2024-11-19 14:00:58'),
+(305,12,'https://localhost:8443/3-wloczki','localhost:8443/wloczka-z-dodatkiem-angory/537-wloczka-angora-lux-roz-338-7032767768297.html','','2024-11-19 14:02:13');
 /*!40000 ALTER TABLE `ps_connections_source` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -18953,7 +18978,7 @@ CREATE TABLE `ps_layered_category` (
   PRIMARY KEY (`id_layered_category`),
   KEY `id_category_shop` (`id_category`,`id_shop`,`type`,`id_value`,`position`),
   KEY `id_category` (`id_category`,`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=407 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=414 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -19368,7 +19393,14 @@ INSERT INTO `ps_layered_category` VALUES
 (403,1,'manufacturer',0,NULL,'manufacturer',4,0,0),
 (404,1,'manufacturer',0,1,'id_feature',5,0,0),
 (405,1,'manufacturer',0,2,'id_feature',6,0,0),
-(406,1,'manufacturer',0,3,'id_feature',7,0,0);
+(406,1,'manufacturer',0,3,'id_feature',7,0,0),
+(407,1,'supplier',0,NULL,'availability',1,0,0),
+(408,1,'supplier',0,NULL,'extras',2,0,0),
+(409,1,'supplier',0,NULL,'condition',3,0,0),
+(410,1,'supplier',0,NULL,'manufacturer',4,0,0),
+(411,1,'supplier',0,1,'id_feature',5,0,0),
+(412,1,'supplier',0,2,'id_feature',6,0,0),
+(413,1,'supplier',0,3,'id_feature',7,0,0);
 /*!40000 ALTER TABLE `ps_layered_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -19386,7 +19418,7 @@ CREATE TABLE `ps_layered_filter` (
   `n_categories` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_layered_filter`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -19396,7 +19428,7 @@ CREATE TABLE `ps_layered_filter` (
 LOCK TABLES `ps_layered_filter` WRITE;
 /*!40000 ALTER TABLE `ps_layered_filter` DISABLE KEYS */;
 INSERT INTO `ps_layered_filter` VALUES
-(1,'Mój szablon - 2024-11-18','a:10:{s:9:\"shop_list\";a:1:{i:0;i:1;}s:10:\"categories\";a:57:{i:0;i:2;i:1;i:3;i:2;i:4;i:3;i:5;i:4;i:6;i:5;i:7;i:6;i:8;i:7;i:9;i:8;i:10;i:9;i:11;i:10;i:12;i:11;i:13;i:12;i:14;i:13;i:15;i:14;i:16;i:15;i:17;i:16;i:18;i:17;i:19;i:18;i:20;i:19;i:21;i:20;i:22;i:21;i:23;i:22;i:24;i:23;i:25;i:24;i:26;i:25;i:27;i:26;i:28;i:27;i:29;i:28;i:30;i:29;i:31;i:30;i:32;i:31;i:33;i:32;i:34;i:33;i:35;i:34;i:36;i:35;i:37;i:36;i:38;i:37;i:39;i:38;i:40;i:39;i:41;i:40;i:42;i:41;i:43;i:42;i:44;i:43;i:45;i:44;i:46;i:45;i:47;i:46;i:48;i:47;i:49;i:48;i:50;i:49;i:51;i:50;i:52;i:51;i:53;i:52;i:54;i:53;i:55;i:54;i:56;i:55;i:57;i:56;i:58;}s:11:\"controllers\";a:2:{i:0;s:8:\"category\";i:1;s:12:\"manufacturer\";}s:23:\"layered_selection_stock\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_extras\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:27:\"layered_selection_condition\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_manufacturer\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_3\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}}',57,'2024-11-18 20:00:07');
+(1,'Mój szablon - 2024-11-18','a:10:{s:9:\"shop_list\";a:1:{i:0;i:1;}s:10:\"categories\";a:57:{i:0;i:2;i:1;i:3;i:2;i:4;i:3;i:5;i:4;i:6;i:5;i:7;i:6;i:8;i:7;i:9;i:8;i:10;i:9;i:11;i:10;i:12;i:11;i:13;i:12;i:14;i:13;i:15;i:14;i:16;i:15;i:17;i:16;i:18;i:17;i:19;i:18;i:20;i:19;i:21;i:20;i:22;i:21;i:23;i:22;i:24;i:23;i:25;i:24;i:26;i:25;i:27;i:26;i:28;i:27;i:29;i:28;i:30;i:29;i:31;i:30;i:32;i:31;i:33;i:32;i:34;i:33;i:35;i:34;i:36;i:35;i:37;i:36;i:38;i:37;i:39;i:38;i:40;i:39;i:41;i:40;i:42;i:41;i:43;i:42;i:44;i:43;i:45;i:44;i:46;i:45;i:47;i:46;i:48;i:47;i:49;i:48;i:50;i:49;i:51;i:50;i:52;i:51;i:53;i:52;i:54;i:53;i:55;i:54;i:56;i:55;i:57;i:56;i:58;}s:11:\"controllers\";a:3:{i:0;s:8:\"category\";i:1;s:12:\"manufacturer\";i:2;s:8:\"supplier\";}s:23:\"layered_selection_stock\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_extras\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:27:\"layered_selection_condition\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_manufacturer\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_3\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}}',57,'2024-11-18 20:00:07');
 /*!40000 ALTER TABLE `ps_layered_filter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -19420,9 +19452,6 @@ CREATE TABLE `ps_layered_filter_block` (
 
 LOCK TABLES `ps_layered_filter_block` WRITE;
 /*!40000 ALTER TABLE `ps_layered_filter_block` DISABLE KEYS */;
-INSERT INTO `ps_layered_filter_block` VALUES
-('49fe8498c58dfc48a60ed6c25cb40b6e','a:1:{s:7:\"filters\";a:7:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:525;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:10;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:0;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:3:\"535\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:3;a:0:{}i:4;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:5:{i:5;a:4:{s:3:\"nbr\";s:2:\"87\";s:4:\"name\";s:7:\"25 gram\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:1;a:4:{s:3:\"nbr\";s:3:\"193\";s:4:\"name\";s:7:\"50 gram\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:3:\"nbr\";s:3:\"190\";s:4:\"name\";s:9:\"100 gram \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:19;a:4:{s:3:\"nbr\";s:2:\"41\";s:4:\"name\";s:9:\"150 gram \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:24;a:4:{s:3:\"nbr\";s:2:\"24\";s:4:\"name\";s:9:\"250 gram \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:10:\"Waga motka\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:5:{i:20;a:4:{s:3:\"nbr\";s:2:\"19\";s:4:\"name\";s:4:\"99 -\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:21;a:4:{s:3:\"nbr\";s:3:\"129\";s:4:\"name\";s:7:\"100-199\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:3:\"nbr\";s:3:\"316\";s:4:\"name\";s:7:\"200-499\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:23;a:4:{s:3:\"nbr\";s:2:\"35\";s:4:\"name\";s:7:\"500-999\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:25;a:4:{s:3:\"nbr\";s:2:\"36\";s:4:\"name\";s:6:\"1000 +\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:25:\"Długość w 100 gramach \";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"3\";s:6:\"values\";a:16:{i:9;a:4:{s:3:\"nbr\";s:2:\"43\";s:4:\"name\";s:7:\"Beżowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:3:\"nbr\";s:2:\"21\";s:4:\"name\";s:6:\"Biały\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:17;a:4:{s:3:\"nbr\";s:2:\"18\";s:4:\"name\";s:5:\"Brąz\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:16;a:4:{s:3:\"nbr\";s:2:\"19\";s:4:\"name\";s:6:\"Czarny\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:14;a:4:{s:3:\"nbr\";s:2:\"29\";s:4:\"name\";s:8:\"Czerwony\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:7;a:4:{s:3:\"nbr\";s:2:\"30\";s:4:\"name\";s:5:\"Ecru \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:10;a:4:{s:3:\"nbr\";s:2:\"36\";s:4:\"name\";s:9:\"Fioletowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:22;a:4:{s:3:\"nbr\";s:2:\"80\";s:4:\"name\";s:8:\"Melanże\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:13;a:4:{s:3:\"nbr\";s:2:\"61\";s:4:\"name\";s:9:\"Niebieski\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:12;a:4:{s:3:\"nbr\";s:2:\"17\";s:4:\"name\";s:13:\"Pomarańczowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:11;a:4:{s:3:\"nbr\";s:2:\"69\";s:4:\"name\";s:7:\"Rózowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:8;a:4:{s:3:\"nbr\";s:2:\"35\";s:4:\"name\";s:5:\"Szary\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:15;a:4:{s:3:\"nbr\";s:2:\"37\";s:4:\"name\";s:8:\"Zielony \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:26;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:6:\"Złoty\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:18;a:4:{s:3:\"nbr\";s:1:\"2\";s:4:\"name\";s:10:\"Łososiowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:6;a:4:{s:3:\"nbr\";s:2:\"24\";s:4:\"name\";s:8:\"Żółty\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:5:\"Kolor\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}}}'),
-('e4258974578fd1e06a0cba18dc8180fc','a:1:{s:7:\"filters\";a:6:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:348;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:0;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:3:\"348\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:3;a:0:{}i:4;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:3;a:4:{s:3:\"nbr\";s:1:\"4\";s:4:\"name\";s:9:\"100 gram \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:10:\"Waga motka\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:1:{i:2;a:4:{s:3:\"nbr\";s:1:\"4\";s:4:\"name\";s:7:\"200-499\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:25:\"Długość w 100 gramach \";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}}}');
 /*!40000 ALTER TABLE `ps_layered_filter_block` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -19448,7 +19477,8 @@ CREATE TABLE `ps_layered_filter_shop` (
 LOCK TABLES `ps_layered_filter_shop` WRITE;
 /*!40000 ALTER TABLE `ps_layered_filter_shop` DISABLE KEYS */;
 INSERT INTO `ps_layered_filter_shop` VALUES
-(1,1);
+(1,1),
+(2,1);
 /*!40000 ALTER TABLE `ps_layered_filter_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -22926,7 +22956,7 @@ INSERT INTO `ps_module_history` VALUES
 (2,1,35,'2024-11-16 21:58:23','2024-11-18 19:12:34'),
 (3,1,14,'2024-11-16 21:58:33','2024-11-16 21:59:47'),
 (4,1,13,'2024-11-18 18:54:21','2024-11-18 18:54:21'),
-(5,1,23,'2024-11-18 19:48:29','2024-11-18 19:51:18'),
+(5,1,23,'2024-11-18 19:48:29','2024-11-19 13:59:34'),
 (6,1,12,'2024-11-19 12:52:03','2024-11-19 12:52:03');
 /*!40000 ALTER TABLE `ps_module_history` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -112735,4 +112765,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2024-11-19 11:57:57
+-- Dump completed on 2024-11-19 13:11:18
