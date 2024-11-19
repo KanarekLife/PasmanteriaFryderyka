@@ -11,7 +11,7 @@ if [ "$OPERATION" = "backup" ]; then
   sed -i -e "s/$MAIL_PASSWORD/\$MAIL_PASSWORD/g" /tmp/backup.sql
   sed -i -e "s/$PRESTASHOP_URL/\$PRESTASHOP_URL/g" /tmp/backup.sql
 
-  cp /tmp/backup.sql ./backup.sql
+  mv /tmp/backup.sql ./backup.sql
 elif [ "$OPERATION" = "restore" ]; then
   echo "Restoring backup..."
 
@@ -23,6 +23,7 @@ elif [ "$OPERATION" = "restore" ]; then
   sed -i -e "s/\$PRESTASHOP_URL/$PRESTASHOP_URL/g" /tmp/backup.sql
 
   mariadb -P 3306 -h $MARIADB_HOST -u $MARIADB_USER -p$MARIADB_PASSWORD $MARIADB_DATABASE </tmp/backup.sql
+  rm /tmp/backup.sql
 else
   echo "Invalid operation $OPERATION - expected backup|restore"
   exit 1
