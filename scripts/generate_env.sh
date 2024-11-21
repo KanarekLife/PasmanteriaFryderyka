@@ -1,7 +1,7 @@
 #!/bin/bash
 
 generate_password() {
-    echo $(tr -dc 'A-Za-z0-9' < /dev/urandom | head -c $1)
+    echo $(tr -dc 'A-Za-z0-9' </dev/urandom | head -c $1)
 }
 
 echo "MARIADB_ROOT_PASSWORD=$(generate_password 32)"
@@ -10,6 +10,9 @@ echo "MARIADB_USER=prestashop-user"
 echo "MARIADB_PASSWORD=$(generate_password 32)"
 echo "MARIADB_HOST=prestashop-db"
 echo "DOMAIN=${1:-localhost}"
+echo "PRESTASHOP_URL=${1:-localhost}:8443"
+echo "MAIL_USER=pasmanteriafryderyka@nasus.dev"
+echo "MAIL_PASSWORD=$(generate_password 32)"
 echo "SECRET=$(generate_password 64)"
 echo "COOKIE_KEY=$(generate_password 64)"
 echo "COOKIE_IV=$(generate_password 32)"

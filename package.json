@@ -1,0 +1,10 @@
+{
+  "name": "pasmanteria-fryderyka",
+  "scripts": {
+    "up": "./scripts/run_dev.sh up",
+    "down": "./scripts/run_dev.sh down",
+    "build": "./scripts/run_dev.sh build",
+    "restore": "./scripts/run_dev.sh restore",
+    "backup": "./scripts/run_dev.sh backup"
+  }
+}

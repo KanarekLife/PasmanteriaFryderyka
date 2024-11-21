@@ -42,6 +42,9 @@ services:
       MARIADB_USER: ${MARIADB_USER}
       MARIADB_PASSWORD: ${MARIADB_PASSWORD}
       MARIADB_HOST: ${MARIADB_HOST}
+      PRESTASHOP_URL: ${PRESTASHOP_URL}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
     volumes:
       - ./db_backup:/app/db_backup
     depends_on:
