@@ -7,6 +7,9 @@ services:
     ports:
       - "8080:80"
       - "8443:443"
+    volumes:
+      - caddy-data:/data/caddy
+      - caddy-config:/config/caddy
     environment:
       DB_HOST: prestashop-db
       DB_NAME: ${MARIADB_DATABASE}
@@ -34,3 +37,5 @@ services:
 
 volumes:
   prestashop-db-data:
+  caddy-data:
+  caddy-config:

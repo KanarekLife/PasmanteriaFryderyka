@@ -22,6 +22,10 @@ RUN docker-php-ext-install \
     opcache
 
 RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
+# Set location for Caddy configuration and data
+ENV XDG_CONFIG_HOME /config
+
+ENV XDG_DATA_HOME /data
 
 EXPOSE 80 443
 
