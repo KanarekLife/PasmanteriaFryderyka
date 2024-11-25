@@ -3,8 +3,10 @@ name: Pasmanteria Fryderyka CI/CD
 on:
   push:
     branches: ["main"]
+    paths: ["src/**"]
   pull_request:
     branches: ["main"]
+    paths: ["src/**"]
 
 env:
     REGISTRY: ghcr.io
