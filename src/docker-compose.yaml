@@ -1,8 +1,6 @@
 services:
   prestashop:
-    build:
-      context: .
-      target: prestashop
+    image: ghcr.io/kanareklife/pasmanteria_fryderyka
     restart: always
     ports:
       - "8080:80"
