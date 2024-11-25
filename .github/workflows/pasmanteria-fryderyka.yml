@@ -1,12 +1,12 @@
 name: Pasmanteria Fryderyka CI/CD
 
 on:
-  push:
-    branches: ["main"]
-    paths: ["src/**"]
-  pull_request:
-    branches: ["main"]
-    paths: ["src/**"]
+    push:
+        branches: ["main"]
+        paths: ["src/**"]
+    pull_request:
+        branches: ["main"]
+        paths: ["src/**"]
 
 env:
     REGISTRY: ghcr.io
@@ -45,7 +45,6 @@ jobs:
                 tags: ${{ steps.meta.outputs.tags }}
                 labels: ${{ steps.meta.outputs.labels }}
             - name: Test Docker image build
-              id: push
               uses: docker/build-push-action@v6.9.0
               if: github.event_name != 'push'
               with:
