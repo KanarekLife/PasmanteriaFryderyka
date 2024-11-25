@@ -1,0 +1,75 @@
+﻿
+.kac-sm-panel{
+position: fixed;
+top: 150px;
+right: -100px;
+text-align: left;
+z-index: 9999;
+    display: none;
+}
+.kac-sm-panel ul{
+list-style-type: none;
+}
+.kac-sm-panel li{
+border-radius: 5px;
+width: 140px;
+height: 40px;
+padding: 5px;
+margin: 3px 0px;
+position: relative;
+right: 0px;
+box-sizing: initial;
+}
+.kac-sm-panel span{
+width: 80px;
+display: inline;
+font-size: 16px;
+vertical-align: middle;
+padding-bottom: 13px;
+position: absolute;
+top: 15px;
+left: 50px;
+color: #FFF;
+font-family: sans-serif;
+font-weight: 700;
+}
+.kac-sm-text-black {
+color: #000000 !important;
+}
+.kac-sm-panel a{
+text-decoration: none;
+}
+.kac-sm-block{
+transition: right 0.5s ease-out 0s;
+}
+.kac-sm-block:hover{
+right: 90px;
+}
+
+.kac-sm-fb{
+background: none repeat scroll 0% 0% #295C9E;
+}.kac-sm-gplus{
+background: none repeat scroll 0% 0% #DC4A3D;
+}.kac-sm-pkt{
+background: none repeat scroll 0% 0% #FFFFFF;
+border: 1px solid #000;
+}.kac-sm-twitter{
+background: none repeat scroll 0% 0% #16B9ED;
+}.kac-sm-blog{
+background: none repeat scroll 0% 0% #0171BB;
+}.kac-sm-pinterest{
+background: none repeat scroll 0% 0% #D73532;
+}.kac-sm-youtube{
+background: none repeat scroll 0% 0% #E32C26;
+}.kac-sm-goldenline{
+background: none repeat scroll 0% 0% #FFFFFF;
+}.kac-sm-allegro{
+background: none repeat scroll 0% 0% #FF5A00;
+}.kac-sm-linkedin{
+background: none repeat scroll 0% 0% #0097BD;
+}.kac-sm-googlekspert{
+background: none repeat scroll 0% 0% #FFFFFF;
+}.kac-sm-payback{
+background: none repeat scroll 0% 0% #00349A;
+}
+@media screen and (max-width:640px){ .kac-sm-panel{display:none;} }
