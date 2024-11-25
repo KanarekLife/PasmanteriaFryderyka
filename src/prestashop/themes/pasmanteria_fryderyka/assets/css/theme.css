@@ -11629,6 +11629,9 @@ li:hover .product-flags {
   text-transform:capitalize;
   font-weight:500
 }
+#blockcart-modal {
+  display: none !important;
+}
 .cart-title {
   color:#000;
   float:left;
