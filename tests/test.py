@@ -253,11 +253,12 @@ class FunctionalTest:
         logger.info('Step 4 - Registering a new account')
 
         timestamp = int(time.time()*1000)
+        salt = random.randint(1000, 9999)
 
         GENDER: Literal[1, 2] = 1
         FIRST_NAME = 'Chica'
         LAST_NAME = 'Chicken'
-        EMAIL = f'chica.{timestamp}@pizzaplex.com'
+        EMAIL = f'chica.{timestamp}{salt}@pizzaplex.com'
         PASSWORD = 'chica123'
 
         logger.info('Entering the registration page')
