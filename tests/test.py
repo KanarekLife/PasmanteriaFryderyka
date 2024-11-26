@@ -25,7 +25,7 @@ except KeyError:
 USE_CHROME = os.environ.get('USE_CHROME', '0') == '1'
 
 PAGE_LOAD_TIMEOUT = 10
-PRESTA_SHOP_URL = "https://localhost:8443/"
+PRESTA_SHOP_URL = os.environ.get('PRESTASHOP_URL', "https://localhost:8443/")
 DOWNLOAD_DIR = Path('./downloads')
 INVOICE_VAT_GLOB_FILENAME = '*.pdf'
 
@@ -169,6 +169,7 @@ class FunctionalTest:
 
         try:
             logger.info('Running all tests')
+            logger.info('Opening the PrestaShop page (%s)', PRESTA_SHOP_URL)
             driver.get(PRESTA_SHOP_URL)
 
             self.test_add_10_items_to_the_cart()

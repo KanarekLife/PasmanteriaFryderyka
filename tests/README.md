@@ -6,7 +6,8 @@
 
 ### Optional env variables:
 
-- `MOZ_HEADLESS` - set it to any value to run the tests in headless mode
+- `PRESTASHOP_URL` - the URL of the PrestaShop instance to test (default: `https://localhost:8443/`)
+- `MOZ_HEADLESS` - set it to any value to run the tests in headless mode (works only with Firefox)
 - `USE_CHROME` - set it to 1 to use Chrome instead of Firefox
 
 ### Running the tests
