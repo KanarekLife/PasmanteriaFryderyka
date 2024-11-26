@@ -113,6 +113,24 @@ class FunctionalTest:
 
         self.driver.back()
     
+    def verify_cart_contents(self):
+        """ Check if the cart contains the expected products (from self.ordered_products) """
+
+        logger.info('Verifying the contents of the cart')
+
+        cart_items = wait_for(self.driver, 'ul.cart-items')
+        products = cart_items.find_elements(By.CSS_SELECTOR, 'li.cart-item')
+
+        assert len(products) == len(self.ordered_products), 'Number of products in the cart should match the expected number'
+
+        for product in products:
+            product_name = product.find_element(By.CSS_SELECTOR, 'a.label').text
+            quantity = product.find_element(By.CSS_SELECTOR, 'input.js-cart-line-product-quantity').get_attribute('value')
+            assert product_name in self.ordered_products, 'Product should be in the list of ordered products'
+            assert quantity == str(self.ordered_products[product_name]), 'Quantity should match the expected quantity'
+        
+        logger.info('Cart contents verified')
+    
     def run_all_tests(self):
         tests_start_time = time.time()
 
@@ -156,8 +174,6 @@ class FunctionalTest:
         for i in range(5, 10):
             self.order_product(i, QUANTITIES_TO_ORDER[i - 1])
 
-        # TODO: maybe verify the cart contents?
-
     def test_search_for_a_product_and_add_to_cart(self):
         logger.info('Step 2 - Searching for a product by name and adding a random product to the cart from among those found')
 
@@ -197,6 +213,8 @@ class FunctionalTest:
 
             cart_predicate = lambda driver: driver.find_element(By.CSS_SELECTOR, 'span.cart-products-count').text == str(self.ordered_products_count)
             wait_for(self.driver, cart_predicate)
+
+        self.verify_cart_contents()
 
     def test_register_a_new_account(self):
         logger.info('Step 4 - Registering a new account')
