@@ -2,6 +2,9 @@ import logging
 import time
 from typing import Callable, Any, Literal
 import random
+from pathlib import Path
+import shutil
+import os
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,17 +12,42 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.firefox.options import Options
 
+from utils.finish_all_orders import OrderFinisher
+
+try:
+    PRESTA_SHOP_API_KEY = os.environ['PRESTASHOP_API_KEY']
+except KeyError:
+    raise ValueError('Please set the PRESTASHOP_API_KEY environment variable')
 
 PAGE_LOAD_TIMEOUT = 10
 PRESTA_SHOP_URL = "https://localhost:8443/"
+DOWNLOAD_DIR = Path('./downloads')
+INVOICE_VAT_GLOB_FILENAME = '*.pdf'
+
+LOG_FILE = 'test-run.log'
+LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logging.basicConfig(
+    level=logging.INFO,
+    format=LOG_FORMAT,
+    filename=LOG_FILE,
+    filemode='w')
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(logging.Formatter(LOG_FORMAT))
+logging.getLogger().addHandler(stream_handler)
 
 
 def get_driver() -> webdriver.Remote:
-    return webdriver.Firefox()
+    shutil.rmtree(DOWNLOAD_DIR, ignore_errors=True) # Clear the downloads directory
+    DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
+    options = Options()
+    options.set_preference("browser.download.folderList", 2)
+    options.set_preference("browser.download.manager.showWhenStarting", False)
+    options.set_preference("browser.download.dir", str(DOWNLOAD_DIR.absolute()))
+    return webdriver.Firefox(options=options)
 
 
 def wait_for(driver: webdriver.Remote,
@@ -52,6 +80,7 @@ class FunctionalTest:
         self.ordered_products = {}
         self.ordered_products_count = 0
         self.order_number = None
+        self.order_finisher = OrderFinisher(PRESTA_SHOP_URL, PRESTA_SHOP_API_KEY)
     
     def enter_category(self, category_id: int):
         top_menu = wait_for(self.driver, 'ul#top-menu')
@@ -87,22 +116,24 @@ class FunctionalTest:
     def run_all_tests(self):
         tests_start_time = time.time()
 
-        logger.info('Running all tests')
-        driver.get(PRESTA_SHOP_URL)
+        try:
+            logger.info('Running all tests')
+            driver.get(PRESTA_SHOP_URL)
 
-        self.test_add_10_items_to_the_cart()
-        self.test_search_for_a_product_and_add_to_cart()
-        self.test_remove_3_products_from_the_cart()
-        self.test_register_a_new_account()
-        self.test_execute_order()
-        self.test_select_carrier()
-        self.test_select_payment_method()
-        self.test_check_order_status()
-        self.test_download_vat_invoice()
+            self.test_add_10_items_to_the_cart()
+            self.test_search_for_a_product_and_add_to_cart()
+            self.test_remove_3_products_from_the_cart()
+            self.test_register_a_new_account()
+            self.test_execute_order()
+            self.test_select_carrier()
+            self.test_select_payment_method()
+            self.test_check_order_status()
+            self.test_download_vat_invoice()
 
-        logger.info('All tests passed')
-        tests_end_time = time.time()
-        logger.info(f'Tests took {tests_end_time - tests_start_time:.2f} seconds')
+            logger.info('All tests passed')
+        finally:
+            tests_end_time = time.time()
+            logger.info(f'Tests took {tests_end_time - tests_start_time:.2f} seconds')
 
     def test_add_10_items_to_the_cart(self):
         logger.info('Step 1 - Adding 10 items to the cart')
@@ -293,13 +324,33 @@ class FunctionalTest:
 
         wait_for(driver, '.order-actions a').click()
 
-    def test_download_vat_invoice():
-        logger.info('Downloading the VAT invoice')
+    def test_download_vat_invoice(self):
+        logger.info('Downloading a VAT invoice')
+
+        logger.info('Changing the order status via the API')
+        self.order_finisher.finish_orders()
+
+        logger.info('Refreshing the page')
+        driver.back()
+
+        status = wait_for(driver, 'table.table tbody span.label').text
+        logger.info('Changed order status: %s', status)
         
-        pass    # TODO
+        logger.info('Downloading the invoice')
+        wait_for(driver, 'table.table tbody td:has(span.label) + td a').click()
+
+        logger.info('Checking if the invoice was downloaded')
+        invoices = list(DOWNLOAD_DIR.glob(INVOICE_VAT_GLOB_FILENAME))
+        assert len(invoices) == 1, 'Exactly one invoice should be downloaded'
+
+        logger.info('Invoice downloaded successfully at %s', invoices[0])
 
 
 if __name__ == '__main__':
-    with get_driver() as driver:
-        test = FunctionalTest(driver)
-        test.run_all_tests()
+    try:
+        with get_driver() as driver:
+            test = FunctionalTest(driver)
+            test.run_all_tests()
+    except Exception as e:
+        logger.exception('Test failed:\n%s', e)
+        raise
