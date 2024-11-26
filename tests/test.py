@@ -10,9 +10,10 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, StaleElementReferenceException, NoSuchElementException
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.chrome.options import Options as ChromeOptions
 
 from utils.finish_all_orders import OrderFinisher
 
@@ -20,6 +21,8 @@ try:
     PRESTA_SHOP_API_KEY = os.environ['PRESTASHOP_API_KEY']
 except KeyError:
     raise ValueError('Please set the PRESTASHOP_API_KEY environment variable')
+
+USE_CHROME = os.environ.get('USE_CHROME', '0') == '1'
 
 PAGE_LOAD_TIMEOUT = 10
 PRESTA_SHOP_URL = "https://localhost:8443/"
@@ -43,7 +46,20 @@ logging.getLogger().addHandler(stream_handler)
 def get_driver() -> webdriver.Remote:
     shutil.rmtree(DOWNLOAD_DIR, ignore_errors=True) # Clear the downloads directory
     DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
-    options = Options()
+
+    if USE_CHROME:
+        options = ChromeOptions()
+        prefs = {
+            "download.default_directory": str(DOWNLOAD_DIR.absolute()),
+            "download.prompt_for_download": False,
+            "download.directory_upgrade": True,
+            "safebrowsing.enabled": False
+        }
+        options.add_experimental_option("prefs", prefs)
+        options.add_argument('--ignore-certificate-errors')
+        return webdriver.Chrome(options=options)
+    
+    options = FirefoxOptions()
     options.set_preference("browser.download.folderList", 2)
     options.set_preference("browser.download.manager.showWhenStarting", False)
     options.set_preference("browser.download.dir", str(DOWNLOAD_DIR.absolute()))
@@ -66,12 +82,29 @@ def wait_for(driver: webdriver.Remote,
         raise ValueError('Selector should be a string, WebElement or a callable')
 
     try:
-        element = WebDriverWait(driver, timeout).until(predicate)
+        while True:
+            try:
+                element = WebDriverWait(driver, timeout).until(predicate)
+            except (StaleElementReferenceException, NoSuchElementException):
+                continue
+            break
     except TimeoutException as e:
         message = f'Element "{selector}" not found on the page'
         logger.error(message)
         raise TimeoutError(message) from e
     return element
+
+
+def wait_for_file_in(dirpath: Path, file_glob: str, timeout: int = PAGE_LOAD_TIMEOUT):
+    """ Wait for a file to appear in the directory """
+    
+    start_time = time.time()
+    while time.time() - start_time < timeout:
+        files = list(dirpath.glob(file_glob))
+        if files:
+            return files[0]
+        time.sleep(0.1)
+    raise TimeoutError(f'File not found in {dirpath}')
 
 
 class FunctionalTest:
@@ -101,7 +134,7 @@ class FunctionalTest:
         assert quantity_element.get_attribute('value') == '1', 'Initially quantity should be 1'
 
         for _ in range(quantity - 1):
-            wait_for(self.driver, '.qty .bootstrap-touchspin-up').click()
+            driver.find_element(By.CSS_SELECTOR, '.qty .bootstrap-touchspin-up').click()
         
         assert quantity_element.get_attribute('value') == str(quantity), 'Quantity should be updated'
 
@@ -308,6 +341,7 @@ class FunctionalTest:
         PAYMENT_OPTION = 3
 
         logger.info('Selecting the payment option nr %d', PAYMENT_OPTION)
+        wait_for(driver, f'#payment-option-{PAYMENT_OPTION}-container')
         driver.find_element(By.CSS_SELECTOR, f'#payment-option-{PAYMENT_OPTION}-container input').click()
 
         logger.info('Accepting the terms')
@@ -350,12 +384,15 @@ class FunctionalTest:
 
         logger.info('Refreshing the page')
         driver.back()
+        driver.refresh()
 
         status = wait_for(driver, 'table.table tbody span.label').text
         logger.info('Changed order status: %s', status)
         
         logger.info('Downloading the invoice')
         wait_for(driver, 'table.table tbody td:has(span.label) + td a').click()
+
+        wait_for_file_in(DOWNLOAD_DIR, INVOICE_VAT_GLOB_FILENAME)
 
         logger.info('Checking if the invoice was downloaded')
         invoices = list(DOWNLOAD_DIR.glob(INVOICE_VAT_GLOB_FILENAME))

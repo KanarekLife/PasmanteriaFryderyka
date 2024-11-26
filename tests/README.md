@@ -7,6 +7,7 @@
 ### Optional env variables:
 
 - `MOZ_HEADLESS` - set it to any value to run the tests in headless mode
+- `USE_CHROME` - set it to 1 to use Chrome instead of Firefox
 
 ### Running the tests
 
