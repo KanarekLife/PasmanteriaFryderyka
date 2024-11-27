@@ -2,15 +2,15 @@ name: Pasmanteria Fryderyka CI/CD
 
 on:
   push:
-    branches: ["main", "task/20-add-test-to-ci-cd"]
-    #paths: ["src/**"]
+    branches: ["main","task/20-add-test-to-ci-cd"]
+    #paths: ["src/**", "test/**"]
   pull_request:
     branches: ["main"]
-    #paths: ["src/**"]
+    paths: ["src/**", "test/**"]
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: KanarekLife/pasmanteria_fryderyka
+  IMAGE_NAME: kanareklife/pasmanteria_fryderyka
 
 jobs:
   build:
@@ -134,26 +134,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5.6.1
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            latest
-            type=sha
+      - name: Push and attest all images
+        run: |
+          IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          docker push --all-tags $IMAGE
 
-      - name: Push Docker image
-        id: push
-        uses: docker/build-push-action@v6.9.0
-        with:
-          push: false
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' $IMAGE:latest | cut -d'@' -f2)
+          echo "DIGEST=$DIGEST" >> $GITHUB_ENV
 
-      - name: Generate artifact attestation
+      - name: Generate and attach provenance attestation
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          subject-digest: ${{ steps.push.outputs.digest }}
-          push-to-registry: false
+          subject-name: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
+          subject-digest: "${{ env.DIGEST }}"
+          push-to-registry: true
