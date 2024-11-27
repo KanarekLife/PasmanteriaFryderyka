@@ -18,7 +18,6 @@ services:
       DB_PASSWORD: ${MARIADB_PASSWORD}
       DOMAIN: ${DOMAIN}
       SECRET: ${SECRET}
-      API_KEY: ${API_KEY}
       COOKIE_KEY: ${COOKIE_KEY}
       COOKIE_IV: ${COOKIE_IV}
       NEW_COOKIE_KEY: ${NEW_COOKIE_KEY}

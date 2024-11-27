@@ -1,62 +1,159 @@
 name: Pasmanteria Fryderyka CI/CD
 
 on:
-    push:
-        branches: ["main"]
-        paths: ["src/**"]
-    pull_request:
-        branches: ["main"]
-        paths: ["src/**"]
+  push:
+    branches: ["main", "task/20-add-test-to-ci-cd"]
+    #paths: ["src/**"]
+  pull_request:
+    branches: ["main"]
+    #paths: ["src/**"]
 
 env:
-    REGISTRY: ghcr.io
-    IMAGE_NAME: KanarekLife/pasmanteria_fryderyka
+  REGISTRY: ghcr.io
+  IMAGE_NAME: KanarekLife/pasmanteria_fryderyka
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        permissions:
-            contents: read
-            packages: write
-            attestations: write
-            id-token: write
-        steps:
-            - uses: actions/checkout@v4
-            - name: Log in to the Container Registry
-              if: github.event_name == 'push'
-              uses: docker/login-action@v3.3.0
-              with:
-                registry: ${{ env.REGISTRY }}
-                username: ${{ github.actor }}
-                password: ${{ secrets.GITHUB_TOKEN }}
-            - name: Extract metadata (tags, labels) for Docker
-              id: meta
-              uses: docker/metadata-action@v5.6.1
-              with:
-                images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            - name: Build and push Docker image
-              id: push
-              uses: docker/build-push-action@v6.9.0
-              if: github.event_name == 'push'
-              with:
-                context: ./src
-                target: prestashop
-                push: true
-                tags: ${{ steps.meta.outputs.tags }}
-                labels: ${{ steps.meta.outputs.labels }}
-            - name: Test Docker image build
-              uses: docker/build-push-action@v6.9.0
-              if: github.event_name != 'push'
-              with:
-                context: ./src
-                target: prestashop
-                push: false
-                tags: ${{ steps.meta.outputs.tags }}
-                labels: ${{ steps.meta.outputs.labels }}
-            - name: Generate artifact attestation
-              uses: actions/attest-build-provenance@v1
-              if: github.event_name == 'push'
-              with:
-                subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-                subject-digest: ${{ steps.push.outputs.digest }}
-                push-to-registry: true
+  build:
+    name: Build the Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5.6.1
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            latest
+            type=sha
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v6.9.0
+        with:
+          context: ./src
+          target: prestashop
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          outputs: type=docker,dest=/tmp/pasmanteria_fryderyka.tar
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Upload Docker image
+        uses: actions/upload-artifact@v4
+        with:
+          name: pasmanteria_fryderyka
+          path: /tmp/pasmanteria_fryderyka.tar
+
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Download Docker image
+        uses: actions/download-artifact@v4
+        with:
+          name: pasmanteria_fryderyka
+          path: /tmp
+
+      - name: Load Docker image
+        run: docker load -i /tmp/pasmanteria_fryderyka.tar
+
+      - name: Start test PrestaShop environment
+        working-directory: ./src
+        run: |
+          ../scripts/generate_env.sh > .env
+          source .env
+          echo "PRESTASHOP_API_KEY=$API_KEY" >> $GITHUB_ENV
+
+          docker compose up -d
+          sleep 10
+          docker compose -f docker-compose.dev.yaml run -e OPERATION=restore --rm prestashop-db-backup-restore
+
+      - name: Setup Firefox
+        uses: browser-actions/setup-firefox@v1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Install dependencies
+        working-directory: ./tests
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        env:
+          MOZ_HEADLESS: 1
+          PRESTASHOP_API_KEY: ${{ env.PRESTASHOP_API_KEY }}
+        working-directory: ./tests
+        run: |
+          python test.py
+
+  push:
+    name: Push the image to the registry
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    needs:
+      - build
+      - test
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Download Docker image
+        uses: actions/download-artifact@v4
+        with:
+          name: pasmanteria_fryderyka
+          path: /tmp
+
+      - name: Load Docker image
+        run: docker load -i /tmp/pasmanteria_fryderyka.tar
+
+      - name: Log in to the Container Registry
+        uses: docker/login-action@v3.3.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5.6.1
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            latest
+            type=sha
+
+      - name: Push Docker image
+        id: push
+        uses: docker/build-push-action@v6.9.0
+        with:
+          push: false
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: false
