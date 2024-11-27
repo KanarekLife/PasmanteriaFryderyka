@@ -5,6 +5,7 @@ Web-shop project for the "Electronic Business" course at the Technical Universit
 ## README files of components
 1. [How to run](src/README.md)
 2. [Data seeder](data_seeder/README.md)
+3. [Discounts_and_stock](src/prestashop/README.md)
 
 ## Team members
 
