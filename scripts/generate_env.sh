@@ -4,6 +4,10 @@ generate_password() {
     echo $(tr -dc 'A-Za-z0-9' </dev/urandom | head -c $1)
 }
 
+generate_api_key() {
+    echo $(tr -dc 'A-Z0-9' </dev/urandom | head -c 32)
+}
+
 echo "MARIADB_ROOT_PASSWORD=$(generate_password 32)"
 echo "MARIADB_DATABASE=prestashop"
 echo "MARIADB_USER=prestashop-user"
@@ -13,6 +17,7 @@ echo "DOMAIN=${1:-localhost}"
 echo "PRESTASHOP_URL=${1:-localhost}:8443"
 echo "MAIL_USER=pasmanteriafryderyka@nasus.dev"
 echo "MAIL_PASSWORD=$(generate_password 32)"
+echo "API_KEY=$(generate_api_key)"
 echo "SECRET=$(generate_password 64)"
 echo "COOKIE_KEY=$(generate_password 64)"
 echo "COOKIE_IV=$(generate_password 32)"

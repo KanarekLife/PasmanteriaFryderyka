@@ -18,6 +18,7 @@ services:
       DB_PASSWORD: ${MARIADB_PASSWORD}
       DOMAIN: ${DOMAIN}
       SECRET: ${SECRET}
+      API_KEY: ${API_KEY}
       COOKIE_KEY: ${COOKIE_KEY}
       COOKIE_IV: ${COOKIE_IV}
       NEW_COOKIE_KEY: ${NEW_COOKIE_KEY}
@@ -47,6 +48,7 @@ services:
       PRESTASHOP_URL: ${PRESTASHOP_URL}
       MAIL_USER: ${MAIL_USER}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
+      API_KEY: ${API_KEY}
     volumes:
       - ./db_backup:/app/db_backup
     depends_on:
