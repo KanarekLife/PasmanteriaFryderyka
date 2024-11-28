@@ -2,11 +2,11 @@ name: Pasmanteria Fryderyka CI/CD
 
 on:
   push:
-    branches: ["main","task/20-add-test-to-ci-cd"]
-    #paths: ["src/**", "test/**"]
+    branches: ["main"]
+    paths: ["src/**", "tests/**"]
   pull_request:
     branches: ["main"]
-    paths: ["src/**", "test/**"]
+    paths: ["src/**", "tests/**"]
 
 env:
   REGISTRY: ghcr.io
