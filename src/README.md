@@ -117,3 +117,38 @@ Run below command to import `backup.sql` file from db_backup folder:
 ```bash
 ../scripts/run_dev.sh restore
 ```
+
+6. Discount and out of stock products.
+
+10% discount on 'zapiecia-broszki' products, but priority is given to the 5 PLN discount
+on individual products from this category, it is the only one active.
+```
+ [domain]/zapiecia-broszki/1311-ozdobna-przypinka-z-drewna-myszka-0656700163725.html
+ [domain]/zapiecia-broszki/1310-ozdobna-przypinka-z-drewna-ptaszek-9565367514052.html
+ [domain]/zapiecia-broszki/1308-ozdobna-przypinka-z-drewna-slonik-2188916489229.html
+ [domain]/zapiecia-broszki/1309-ozdobna-przypinka-z-drewna-wiewiorka-3681744882121.html
+```
+
+20% discount on the category beads-wooden, in which the products are listed.
+```
+ [domain]/koraliki-drewniane/1307-koraliki-drewniane-buzki-14mm-5-sztuk-9605397813078.html
+ [domain]/koraliki-drewniane/1306-koraliki-drewniane-buzki-20mm-5-sztuk-2905564128457.html
+```
+
+The products listed above also have variants (combinations), 
+two categories of variants, and a different number of options in each category.
+There are 10 pieces of each product including each variant except those which are out of stock:
+
+```
+ [domain]/wloczka-100-akryl/12-wloczka-baby-yarnart-203-ciemny-fiolet-5665011950972.html
+ [domain]/wloczka-100-akryl/11-wloczka-punch-etrofil-72106-4472677830799.html
+ [domain]/wloczka-100-akryl/5-wloczka-punch-etrofil-72104-1452682180650.html
+ [domain]/wloczka-100-akryl/6-wloczka-baby-yarnart-174-ostry-roz-5692192010799.html
+ [domain]/wloczka-100-akryl/7-wloczka-adore-kolor-ecru-331-3085237449962.html
+ [domain]/wloczka-100-akryl/8-wloczka-punch-etrofil-72107-2995147680330.html
+ [domain]/wloczka-100-akryl/9-wloczka-baby-yarnart-195-szary-3131894076759.html
+ [domain]/wloczka-100-akryl/10-wloczka-adore-kolor-bez-335-3363507332359.html
+ [domain]/koraliki-drewniane/1306-koraliki-drewniane-buzki-20mm-5-sztuk-2905564128457.html
+ [domain]/wloczka-100-akryl/3-wloczka-baby-yarnart-156-czerwony-5391184171460.html
+ [domain]/wloczka-100-akryl/4-wloczka-adore-kolor-bialy-330-0605024598083.html
+```
