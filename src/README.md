@@ -118,7 +118,9 @@ Run below command to import `backup.sql` file from db_backup folder:
 ../scripts/run_dev.sh restore
 ```
 
-6. Discount and out of stock products.
+## Discount, variants and out of stock products.
+
+1. discounts and variants
 
 10% discount on 'zapiecia-broszki' products, but priority is given to the 5 PLN discount
 on individual products from this category, it is the only one active.
@@ -137,6 +139,8 @@ on individual products from this category, it is the only one active.
 
 The products listed above also have variants (combinations), 
 two categories of variants, and a different number of options in each category.
+
+2. stock
 There are 10 pieces of each product including each variant except those which are out of stock:
 
 ```
