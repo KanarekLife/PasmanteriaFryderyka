@@ -47,6 +47,7 @@ services:
       PRESTASHOP_URL: ${PRESTASHOP_URL}
       MAIL_USER: ${MAIL_USER}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
+      API_KEY: ${API_KEY}
     volumes:
       - ./db_backup:/app/db_backup
     depends_on:
