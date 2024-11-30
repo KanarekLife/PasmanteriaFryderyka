@@ -6,6 +6,16 @@ Web-shop project for the "Electronic Business" course at the Technical Universit
 1. [How to run](src/README.md)
 2. [Data seeder](data_seeder/README.md)
 
+## Technologies used
+
+- [Prestashop 1.7.8.11](https://github.com/PrestaShop/PrestaShop/tree/1.7.8.11)
+- `php:7.4-fpm-alpine`
+- `mariadb:11.5`
+- [Caddy](https://caddyserver.com/) webserver
+- Python 3.13
+- Selenium
+- Docker
+
 ## Team members
 
 - [Filip Dawidowski](https://github.com/fildaw)
