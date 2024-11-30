@@ -6,6 +6,7 @@ services:
       - "8080:80"
       - "8443:443"
     volumes:
+      - prestashop-images:/app/prestashop/img
       - caddy-data:/data/caddy
       - caddy-config:/config/caddy
     environment:
@@ -35,5 +36,6 @@ services:
 
 volumes:
   prestashop-db-data:
+  prestashop-images:
   caddy-data:
   caddy-config:
