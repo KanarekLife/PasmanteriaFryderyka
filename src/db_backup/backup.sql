@@ -2342,6 +2342,33 @@ INSERT INTO `ps_authorization_role` VALUES
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ps_blockwishlist_statistics`
+--
+
+DROP TABLE IF EXISTS `ps_blockwishlist_statistics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_blockwishlist_statistics` (
+  `id_statistics` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_cart` int(10) unsigned DEFAULT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
+  `date_add` datetime NOT NULL,
+  `id_shop` int(10) unsigned DEFAULT 1,
+  PRIMARY KEY (`id_statistics`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_blockwishlist_statistics`
+--
+
+LOCK TABLES `ps_blockwishlist_statistics` WRITE;
+/*!40000 ALTER TABLE `ps_blockwishlist_statistics` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_blockwishlist_statistics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ps_carrier`
 --
 
@@ -5857,7 +5884,7 @@ CREATE TABLE `ps_connections` (
   KEY `id_guest` (`id_guest`),
   KEY `date_add` (`date_add`),
   KEY `id_page` (`id_page`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5938,7 +5965,8 @@ INSERT INTO `ps_connections` VALUES
 (69,1,1,2,1,2886991873,'2024-11-26 15:43:26',''),
 (70,1,1,43,1,2886860801,'2024-11-27 22:23:53',''),
 (71,1,1,44,8,2886860801,'2024-11-27 22:36:35',''),
-(72,1,1,45,1,2886860801,'2024-11-30 17:33:43','');
+(72,1,1,45,1,2886860801,'2024-11-30 17:33:43',''),
+(73,1,1,2,1,2886860801,'2024-11-30 19:57:24','');
 /*!40000 ALTER TABLE `ps_connections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5986,7 +6014,7 @@ CREATE TABLE `ps_connections_source` (
   KEY `orderby` (`date_add`),
   KEY `http_referer` (`http_referer`),
   KEY `request_uri` (`request_uri`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5996,7 +6024,11 @@ CREATE TABLE `ps_connections_source` (
 LOCK TABLES `ps_connections_source` WRITE;
 /*!40000 ALTER TABLE `ps_connections_source` DISABLE KEYS */;
 INSERT INTO `ps_connections_source` VALUES
-(1,72,'https://$PRESTASHOP_URL/admin26720tygg/index.php/sell/orders/?_token=Tlet47Gs1Cl3u5tFIfdZa2f3QcdCth-moQdazvC4iW0','$PRESTASHOP_URL/','','2024-11-30 18:01:34');
+(1,72,'https://$PRESTASHOP_URL/admin26720tygg/index.php/sell/orders/?_token=Tlet47Gs1Cl3u5tFIfdZa2f3QcdCth-moQdazvC4iW0','$PRESTASHOP_URL/','','2024-11-30 18:01:34'),
+(2,73,'https://$PRESTASHOP_URL/','$PRESTASHOP_URL/3-wloczki','','2024-11-30 19:57:26'),
+(3,73,'https://$PRESTASHOP_URL/3-wloczki','$PRESTASHOP_URL/wloczka-z-dodatkiem-angory/533-wloczka-angora-lux-pastelowy-turkus-540-3908956063518.html','','2024-11-30 19:57:28'),
+(4,73,'https://$PRESTASHOP_URL/wloczka-100-akryl/20-wloczka-punch-etrofil-74140-3588499866274.html','$PRESTASHOP_URL/','','2024-11-30 20:01:56'),
+(5,73,'https://$PRESTASHOP_URL/wloczka-100-akryl/20-wloczka-punch-etrofil-74140-3588499866274.html','$PRESTASHOP_URL/','','2024-11-30 20:02:46');
 /*!40000 ALTER TABLE `ps_connections_source` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -7504,7 +7536,7 @@ CREATE TABLE `ps_employee_session` (
   `id_employee` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_employee_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7522,7 +7554,8 @@ INSERT INTO `ps_employee_session` VALUES
 (12,1,'9f688fb4d99f01cb1f99f52df09dbd07db586040'),
 (13,1,'c3a8ace8a30b044388b649e48756724fed4f4c7d'),
 (14,1,'b0dbec9773cd2c325d921fd4210bb882d36a57bb'),
-(15,1,'87ed70203f8a4514335f18d9d499b564e716ee00');
+(15,1,'87ed70203f8a4514335f18d9d499b564e716ee00'),
+(16,1,'33c8175d24599f372ad99ad0335d2b6d55da1009');
 /*!40000 ALTER TABLE `ps_employee_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -18816,7 +18849,7 @@ CREATE TABLE `ps_info_lang` (
 LOCK TABLES `ps_info_lang` WRITE;
 /*!40000 ALTER TABLE `ps_info_lang` DISABLE KEYS */;
 INSERT INTO `ps_info_lang` VALUES
-(1,1,1,'<h2>Custom Text Block</h2>\n<p><strong class=\"dark\">Lorem ipsum dolor sit amet conse ctetu</strong></p>\n<p>Sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>');
+(1,1,1,'<h1 style=\"text-transform:none;\">Pasmanteria internetowa Świat Włóczek</h1>\n<p>Robótki na drutach, szydełkowanie czy wyszywanie to nie tylko ciekawe hobby oraz sposób na przyjemne i kreatywne spędzenie czasu. Dzięki nim możesz sprawić przyjemność swoim dzieciom, wnukom czy przyjaciółce – np. wręczając im własnoręcznie wykonany szalik czy sweter. To także sposób na dekorowanie domu serwetami i narzutami z kolorowych włóczek. Wszystkie te materiały dostarczy Ci <strong>pasmanteria internetowa</strong> Świat Włóczek.</p>\n<p>Uwielbiamy robótki ręczne! Od wielu lat prowadzimy sklep z akcesoriami dziewiarskimi. Ofertę kierujemy zarówno do osób, które dopiero zaczynają przygodę z szydełkowaniem, jak i do prawdziwych ekspertów w tej dziedzinie. W naszej pasmanterii internetowej jedni i drudzy znajdą rozmaite akcesoria dziewiarskie, a także włóczki, kordonki i krosna, z którymi robótka będzie im szła szybko, przyjemnie i bardzo relaksująco.</p>\n<h2 style=\"text-transform:none;\">Bogaty asortyment włóczek i akcesoriów</h2>\n<p>Asortyment, który dla Ciebie przygotowaliśmy, jest bardzo zróżnicowany, co pozwala na dobór materiałów i akcesoriów do każdej planowanej pracy. Proponujemy zarówno włóczki wełniane, jak i bawełniane w żywych kolorach, a dla amatorów szydełkowania – wielobarwne kordonki. Pasmanteria internetowa przygotowała też rozmaite akcesoria do robótek ręcznych – szydełka aluminiowe i bambusowe oraz elementy ułatwiające dzierganie: rozdzielacze oczek czy podświetlane narzędzia.</p>\n<p>Chcemy, by robótki stały się Twoim hobby. Dlatego proponujemy artykuły nie tylko wytrzymałe, ale także samym wyglądem zachęcające do rozpoczęcia kolejnego projektu.</p>\n<p>Nasza pasmanteria internetowa zapewnia także pełną wygodę zakupów – dostarczamy zamówienia prosto do domu. Przyjmujemy zwroty, chętnie też doradzamy klientom, jaki produkt spełni ich wszystkie potrzeby. Dlatego nie wahaj się – stań się częścią rodziny pasjonatów robótek!</p>');
 /*!40000 ALTER TABLE `ps_info_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -19398,6 +19431,8 @@ CREATE TABLE `ps_layered_filter_block` (
 
 LOCK TABLES `ps_layered_filter_block` WRITE;
 /*!40000 ALTER TABLE `ps_layered_filter_block` DISABLE KEYS */;
+INSERT INTO `ps_layered_filter_block` VALUES
+('49fe8498c58dfc48a60ed6c25cb40b6e','a:1:{s:7:\"filters\";a:7:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:525;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:10;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:535;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:3:\"535\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:3;a:0:{}i:4;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:5:{i:5;a:4:{s:3:\"nbr\";s:2:\"87\";s:4:\"name\";s:7:\"25 gram\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:1;a:4:{s:3:\"nbr\";s:3:\"193\";s:4:\"name\";s:7:\"50 gram\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:3:\"nbr\";s:3:\"190\";s:4:\"name\";s:9:\"100 gram \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:19;a:4:{s:3:\"nbr\";s:2:\"41\";s:4:\"name\";s:9:\"150 gram \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:24;a:4:{s:3:\"nbr\";s:2:\"24\";s:4:\"name\";s:9:\"250 gram \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:10:\"Waga motka\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:5:{i:20;a:4:{s:3:\"nbr\";s:2:\"19\";s:4:\"name\";s:4:\"99 -\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:21;a:4:{s:3:\"nbr\";s:3:\"129\";s:4:\"name\";s:7:\"100-199\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:3:\"nbr\";s:3:\"316\";s:4:\"name\";s:7:\"200-499\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:23;a:4:{s:3:\"nbr\";s:2:\"35\";s:4:\"name\";s:7:\"500-999\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:25;a:4:{s:3:\"nbr\";s:2:\"36\";s:4:\"name\";s:6:\"1000 +\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:25:\"Długość w 100 gramach \";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"3\";s:6:\"values\";a:16:{i:9;a:4:{s:3:\"nbr\";s:2:\"43\";s:4:\"name\";s:7:\"Beżowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:3:\"nbr\";s:2:\"21\";s:4:\"name\";s:6:\"Biały\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:17;a:4:{s:3:\"nbr\";s:2:\"18\";s:4:\"name\";s:5:\"Brąz\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:16;a:4:{s:3:\"nbr\";s:2:\"19\";s:4:\"name\";s:6:\"Czarny\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:14;a:4:{s:3:\"nbr\";s:2:\"29\";s:4:\"name\";s:8:\"Czerwony\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:7;a:4:{s:3:\"nbr\";s:2:\"30\";s:4:\"name\";s:5:\"Ecru \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:10;a:4:{s:3:\"nbr\";s:2:\"36\";s:4:\"name\";s:9:\"Fioletowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:22;a:4:{s:3:\"nbr\";s:2:\"80\";s:4:\"name\";s:8:\"Melanże\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:13;a:4:{s:3:\"nbr\";s:2:\"61\";s:4:\"name\";s:9:\"Niebieski\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:12;a:4:{s:3:\"nbr\";s:2:\"17\";s:4:\"name\";s:13:\"Pomarańczowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:11;a:4:{s:3:\"nbr\";s:2:\"69\";s:4:\"name\";s:7:\"Rózowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:8;a:4:{s:3:\"nbr\";s:2:\"35\";s:4:\"name\";s:5:\"Szary\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:15;a:4:{s:3:\"nbr\";s:2:\"37\";s:4:\"name\";s:8:\"Zielony \";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:26;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:6:\"Złoty\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:18;a:4:{s:3:\"nbr\";s:1:\"2\";s:4:\"name\";s:10:\"Łososiowy\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:6;a:4:{s:3:\"nbr\";s:2:\"24\";s:4:\"name\";s:8:\"Żółty\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:5:\"Kolor\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}}}');
 /*!40000 ALTER TABLE `ps_layered_filter_block` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -21148,7 +21183,7 @@ CREATE TABLE `ps_log` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=442 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=443 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -21598,7 +21633,8 @@ INSERT INTO `ps_log` VALUES
 (438,1,0,'Product modification','Product',1308,1,NULL,1,0,1,'2024-11-26 16:09:13','2024-11-26 16:09:13'),
 (439,1,0,'Product modification','Product',1308,1,NULL,1,0,1,'2024-11-26 16:09:16','2024-11-26 16:09:16'),
 (440,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-27 22:23:45','2024-11-27 22:23:45'),
-(441,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 17:35:35','2024-11-30 17:35:35');
+(441,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 17:35:35','2024-11-30 17:35:35'),
+(442,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 20:02:07','2024-11-30 20:02:07');
 /*!40000 ALTER TABLE `ps_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -23202,6 +23238,7 @@ INSERT INTO `ps_module_shop` VALUES
 (17,1,7),
 (18,1,7),
 (19,1,7),
+(20,1,7),
 (21,1,7),
 (22,1,7),
 (23,1,7),
@@ -113243,6 +113280,88 @@ INSERT INTO `ps_webservice_permission` VALUES
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ps_wishlist`
+--
+
+DROP TABLE IF EXISTS `ps_wishlist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_wishlist` (
+  `id_wishlist` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned DEFAULT 1,
+  `id_shop_group` int(10) unsigned DEFAULT 1,
+  `token` varchar(64) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `counter` int(10) unsigned DEFAULT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `default` int(10) unsigned DEFAULT 0,
+  PRIMARY KEY (`id_wishlist`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_wishlist`
+--
+
+LOCK TABLES `ps_wishlist` WRITE;
+/*!40000 ALTER TABLE `ps_wishlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_wishlist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_wishlist_product`
+--
+
+DROP TABLE IF EXISTS `ps_wishlist_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_wishlist_product` (
+  `id_wishlist_product` int(10) NOT NULL AUTO_INCREMENT,
+  `id_wishlist` int(10) unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL,
+  `priority` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_wishlist_product`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_wishlist_product`
+--
+
+LOCK TABLES `ps_wishlist_product` WRITE;
+/*!40000 ALTER TABLE `ps_wishlist_product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_wishlist_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_wishlist_product_cart`
+--
+
+DROP TABLE IF EXISTS `ps_wishlist_product_cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_wishlist_product_cart` (
+  `id_wishlist_product` int(10) unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL,
+  `date_add` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_wishlist_product_cart`
+--
+
+LOCK TABLES `ps_wishlist_product_cart` WRITE;
+/*!40000 ALTER TABLE `ps_wishlist_product_cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_wishlist_product_cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ps_zone`
 --
 
@@ -113317,4 +113436,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2024-11-30 17:38:10
+-- Dump completed on 2024-11-30 19:02:52
