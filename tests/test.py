@@ -342,7 +342,7 @@ class FunctionalTest:
     def test_select_payment_method(self):
         logger.info('Step 7 - Selecting the method of payment: on delivery')
 
-        PAYMENT_OPTION = 3
+        PAYMENT_OPTION = 2
 
         logger.info('Selecting the payment option nr %d', PAYMENT_OPTION)
         wait_for(driver, f'#payment-option-{PAYMENT_OPTION}-container')
