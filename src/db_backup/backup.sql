@@ -4961,7 +4961,7 @@ INSERT INTO `ps_cms_lang` VALUES
 (15,1,1,'ZWROTY I REKLAMACJE','','','','<h2>ZWROTY I REKLAMACJE</h2>\n<p>Klient ma prawo zrezygnować z nie wysłanego jeszcze zamówienia poprzez email lub telefonicznie</p>\n<p>Zwrot towaru bez podania przyczyny</p>\n<p>ustawa o prawach konsumenta z dnia 30 maja 2014 r. (Dz.U. 2014 r. poz. 827 ze zm.)</p>\n<p>Klient ma prawo zwrócić towar bez podania przyczyny w ciągu 14 dni kalendarzowych. W tym celu należy wypełnić FORMULARZ . Zwracany towar nie może być uszkodzony i musi być dołączony dowód zakupu. Klient również ponosi  odpowiedzialność za zmniejszenie wartości produktów .Pieniądze za towar są zwracane konsumentowi w ciągu 14 dni od otrzymanego towaru. Dokonujemy zwrotu płatności  na rachunek bankowy, chyba, że strony uzgodniły inaczej. <strong>Konsument ponosi bezpośrednie koszty zwrotu Produktu</strong> (czyli koszt odesłania produktów do nas), chyba że Sprzedawca zgodził się je ponieść lub nie poinformował konsumenta o konieczności poniesienia tych kosztów.</p>\n<p> </p>\n<p>Wszystkie reklamacje rozpatrywane są wciągu 14 dni kalendarzowych. Towar uszkodzony z naszej winy  wymieniany jest na ten sam lub inny jeśli strony tak uzgodnią. Jeśli okazało by się, że wymiana jest niemożliwa z przyczyny braku towaru do wymiany  niezwłocznie dokonujemy zwrotu pieniędzy.</p>\n<p>Bardzo prosimy do zwracanego towaru dołączyć FORMULARZ. Jeśli nie macie Państwo możliwości wydrukowania prosimy odręcznie napisać wszystkie niezbędne dla nas informacje. Bez tego zwrot gotówki lub wymiana może się opóźnić.</p>\n<p>                                                                                          FORMULARZ DO POBRANIA </p>\n<p><a href=\"http://tp2013.foset.pl/img/dodatkowe/foto/zwrot-towaru.pdf\"><img style=\"margin-left:auto;margin-right:auto;\" src=\"http://tp2013.foset.pl/img/dodatkowe/foto/pdf.gif\" alt=\"pdf\" width=\"120\" height=\"120\" /></a></p>\n<p> </p>\n<p>Wszytkie zwroty proszę odsyłać na adres</p>\n<p>MakArt \" Świat włóczek\"</p>\n<p>Fitznerów 2</p>\n<p>41-100 Siemianowcie Śl</p>\n<p></p>','zwroty-i-reklamacje'),
 (16,1,1,'Wysyłki Zagraniczne','','','','\n<h5><span style=\"line-height:1.5em;\">Jeśli mieszkają Państwo poza granicami Polski i chcecie dokonać zakupu w naszym sklepie to proszę złożyć zamówienie i wybrać opcję przesyłka zagraniczna. My prześlemy Państwu mailem informacje dotyczące kosztów wysyłki oraz link do płatności poprzez system PAYPAL ( to najłatwiejsza forma zapłaty bez dodatkowych kosztów). Można zapłacić również zwykłym przelewem</span></h5>\n<h5><span>KOSZTY WYSYŁEK DO EUROPY:</span></h5>\n<h5> </h5>\n<h5>LIST POLECONY<br />do 500 gram - 20,60 zł<br />do 1000 gram- 34,60 zł </h5>\n<p> </p>\n<h5><span>USŁUGI PACZKOWE</span></h5>\n<h5><span>od 2kg – 62,00 zł</span></h5>\n<h5><span>do 3kg – 67,00 zł</span></h5>\n<h5><span>do 4kg – 75,00 zł</span></h5>\n<h5><span>do 5kg – 84,00 zł</span></h5>\n<h5><span>do 6kg – 86,00 zł</span></h5>\n<h5><span>do 7kg – 88,00 zł</span></h5>\n<h5><span>do 8kg – 90,00 zł</span></h5>\n<h5><span>do 9kg – 92,00 zł</span></h5>\n<h5><span>do 10kg – 95,00 zł</span></h5>\n<h5><span>do 11kg – 100,00 zł</span></h5>\n<h5><span>do 12kg – 105,00 zł</span></h5>\n<h5><span>do 13kg – 110,00 zł</span></h5>\n<h5><span>do 14kg – 116,00 zł</span></h5>\n<h5><span>do 15kg – 124,00 zł</span></h5>\n<h5><span>do 16 kg -127,00 zł </span></h5>\n<h5><span>do 17 kg- 131,00 zł</span></h5>\n<h5><span>do 18 kg – 136,00 zł</span></h5>\n<h5><span>do 19 kg – 141,00 zł</span></h5>\n<h5><span>do 20 kg – 146,00 zł</span></h5>\n<h5><span>Koszty wysyłek zagranicznych są zgodne z cennikiem Poczty Polskiej</span></h5>\n<h5><span style=\"color:#ff0000;\"><a href=\"http://cennik.poczta-polska.pl/usluga,zagraniczny_przesylka_listowa.html\"><span style=\"color:#ff0000;\">http://cennik.poczta-polska.pl/usluga,zagraniczny_przesylka_listowa.html</span></a></span></h5>\n<h5><span>Jeśli zamówienie przekracza 200 zł od kosztów przesyłki zagranicznej odliczamy 16,00 zł ( to koszt, który pokrywamy my na teranie naszego kraju )</span></h5>\n<h5><span>Wysyłamy Paczki do wszystkich krajów. Koszty wysyłki poza Europą można sprawdzić tutaj : <span style=\"color:#ff0000;\"><a href=\"http://cennik.poczta-polska.pl/usluga,zagraniczny_przesylka_listowa.html\"><span style=\"color:#ff0000;\">http://cennik.poczta-polska.pl/usluga,zagraniczny_przesylka_listowa.html</span></a></span></span></h5>\n\n<p></p>','wysylki-zagraniczne'),
 (17,1,1,'Aktualności','','','','<h3 class=\"Recent-title h3\">Recent blog posts</h3>\n<div class=\"leading-blog\" style=\"margin-bottom:30px;\">\n<div class=\"nocol-lg-12\">\n\n<h4 class=\"title media-heading\"><a href=\"https://www.twojapasmanteria.pl/category/szydelkowanie-krok-po-kroku-b28.html\" title=\"Szydełkowanie krok po kroku\">Szydełkowanie krok po kroku</a></h4>\n<div class=\"blog-image col-xs-12 col-sm-5\"><img src=\"https://www.twojapasmanteria.pl/img/psblog/b/28/554_284/b-szydelkowanie.jpg\" alt=\"b-szydelkowanie\" title=\"Szydełkowanie krok po kroku\" class=\"img-fluid\" /> <span class=\"blogicons\"> <a title=\"Click to view Full Image\" href=\"https://www.twojapasmanteria.pl/img/psblog/b/28/554_284/b-szydelkowanie.jpg\" class=\"icon zoom\"></a> <a title=\"Click to view Read More\" href=\"https://www.twojapasmanteria.pl/category/szydelkowanie-krok-po-kroku-b28.html\" class=\"icon readmore_link\"></a> </span></div>\n<div class=\"col-xs-12 col-sm-7 blog-content-wrap\">\n<div class=\"blog-meta\"><span class=\"blog-created\"> <span class=\"fa fa-calendar\"> On: </span>  wtorek, września 3, 2019  </span></div>\n<div class=\"blog-shortinfo\">Na szydełku można wykonać wiele przedmiotów, od maskotek, przez ozdoby do domu, aż po ubrania i akcesoria takie jak szaliki, czapki i torebki. Aby jednak...\n<p></p>\n</div>\n</div>\n\n</div>\n</div>\n<div class=\"nocol-lg-12\">\n\n</div>\n<h4 class=\"title media-heading\"><a href=\"https://www.twojapasmanteria.pl/category/rodzaje-szydelek-b27.html\" title=\"Rodzaje szydełek\">Rodzaje szydełek</a></h4>\n<div class=\"blog-image col-xs-12 col-sm-5\"><img src=\"https://www.twojapasmanteria.pl/img/psblog/b/27/554_284/b-gettyimages-524775227.jpg\" alt=\"b-gettyimages-524775227\" title=\"Rodzaje szydełek\" class=\"img-fluid\" /> <span class=\"blogicons\"> <a title=\"Click to view Full Image\" href=\"https://www.twojapasmanteria.pl/img/psblog/b/27/554_284/b-gettyimages-524775227.jpg\" class=\"icon zoom\"></a> <a title=\"Click to view Read More\" href=\"https://www.twojapasmanteria.pl/category/rodzaje-szydelek-b27.html\" class=\"icon readmore_link\"></a> </span></div>\n<p><span class=\"blog-created\"> <span class=\"fa fa-calendar\"> On: </span>  środa, sierpnia 7, 2019 </span></p>\n<p></p>','aktualnosci'),
-(18,1,1,'Formy płatności','','','','<p>W sklepie dostępnych jest kilka form płatności:</p>\n<p>- Płatność czekiem,</p>\n<p>- Płatność gotówką,</p>\n<p>-Płatność przelewem</p>','formy-platnosci');
+(18,1,1,'Formy płatności','','','','<p>W sklepie dostępnych jest kilka form płatności:</p>\n<p>- Płatność gotówką,</p>\n<p>- Płatność przelewem.</p>','formy-platnosci');
 /*!40000 ALTER TABLE `ps_cms_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5542,7 +5542,7 @@ INSERT INTO `ps_configuration` VALUES
 (458,NULL,NULL,'PS_PSX_FIREBASE_REFRESH_DATE','2024-11-16 21:30:27','2024-11-16 21:30:27','2024-11-16 21:30:27'),
 (459,NULL,NULL,'PS_ACCOUNTS_FIREBASE_ID_TOKEN',NULL,'2024-11-16 21:30:27','2024-11-16 21:30:27'),
 (460,NULL,NULL,'PS_ACCOUNTS_ACCESS_TOKEN',NULL,'2024-11-16 21:30:27','2024-11-16 21:30:27'),
-(461,NULL,NULL,'PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN',NULL,'2024-11-16 21:51:06','2024-11-30 18:01:18'),
+(461,NULL,NULL,'PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN',NULL,'2024-11-16 21:51:06','2024-12-01 16:30:31'),
 (462,NULL,NULL,'CONF_PAYPAL_FIXED','0.2','2024-11-16 21:54:06','2024-11-16 21:54:06'),
 (463,NULL,NULL,'CONF_PAYPAL_VAR','2','2024-11-16 21:54:06','2024-11-16 21:54:06'),
 (464,NULL,NULL,'CONF_PAYPAL_FIXED_FOREIGN','0.2','2024-11-16 21:54:06','2024-11-16 21:54:06'),
@@ -7493,7 +7493,7 @@ CREATE TABLE `ps_employee` (
 LOCK TABLES `ps_employee` WRITE;
 /*!40000 ALTER TABLE `ps_employee` DISABLE KEYS */;
 INSERT INTO `ps_employee` VALUES
-(1,1,1,'Fazbear','Freddy','freddy@fazbear.com','$2y$10$v1vTgonJufOUXkNdcTKKw.UU7ny0A60SDjWoVKtVehf2GK6TAqJhK','2024-11-09 06:35:30','2024-01-01','2024-11-16','0000-00-00','0000-00-00',1,'year','','default','theme.css',1,0,1,1,NULL,0,0,2,'2024-11-30','','0000-00-00 00:00:00',0);
+(1,1,1,'Fazbear','Freddy','freddy@fazbear.com','$2y$10$v1vTgonJufOUXkNdcTKKw.UU7ny0A60SDjWoVKtVehf2GK6TAqJhK','2024-11-09 06:35:30','2024-01-01','2024-11-16','0000-00-00','0000-00-00',1,'year','','default','theme.css',1,0,1,1,NULL,0,0,2,'2024-12-01','','0000-00-00 00:00:00',0);
 /*!40000 ALTER TABLE `ps_employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -7536,7 +7536,7 @@ CREATE TABLE `ps_employee_session` (
   `id_employee` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_employee_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -23289,7 +23289,7 @@ CREATE TABLE `ps_log` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=443 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=444 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -23740,7 +23740,8 @@ INSERT INTO `ps_log` VALUES
 (439,1,0,'Product modification','Product',1308,1,NULL,1,0,1,'2024-11-26 16:09:16','2024-11-26 16:09:16'),
 (440,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-27 22:23:45','2024-11-27 22:23:45'),
 (441,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 17:35:35','2024-11-30 17:35:35'),
-(442,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 20:02:07','2024-11-30 20:02:07');
+(442,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 20:02:07','2024-11-30 20:02:07'),
+(443,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-12-01 16:30:29','2024-12-01 16:30:29');
 /*!40000 ALTER TABLE `ps_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -25338,7 +25339,6 @@ INSERT INTO `ps_module_shop` VALUES
 (11,1,7),
 (12,1,7),
 (13,1,7),
-(14,1,7),
 (15,1,7),
 (16,1,7),
 (17,1,7),
@@ -112404,4 +112404,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2024-12-01 14:27:23
+-- Dump completed on 2024-12-01 15:32:33
