@@ -303,9 +303,16 @@ class FunctionalTest:
         wait_for(driver, 'form#customer-form button[type="submit"]').click()
 
         logger.info('Verifying the registration')
-        wait_for(driver, '#_desktop_user_info').click()
-        if wait_for(driver, '.user-info .account').text != f'{FIRST_NAME} {LAST_NAME}':
-            logger.warning('Account name should match the registered name')
+        RETRY_COUNT = 2
+        for i in range(RETRY_COUNT):
+            wait_for(driver, '#_desktop_user_info').click()
+            try:
+                if wait_for(driver, '.user-info .account').text != f'{FIRST_NAME} {LAST_NAME}':
+                    logger.warning('Account name should match the registered name')
+                break
+            except TimeoutError:
+                if i >= RETRY_COUNT - 1:
+                    raise
 
     def test_execute_order(self):
         logger.info('Step 5 - Executing an order of the contents of the shopping cart')
