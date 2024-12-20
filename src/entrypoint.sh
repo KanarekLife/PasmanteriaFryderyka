@@ -9,5 +9,13 @@ if [ "$DEV_MODE" == "true" ]; then
     echo "Running in development mode"
 fi
 
+if [ "$RESTORE_DB" == "true" ]; then
+    (
+        cd db_backup
+        export OPERATION=restore 
+        ./db_manager.sh
+    )
+fi
+
 caddy start
 exec php-fpm # without exec, php-fpm will not receive signals

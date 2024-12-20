@@ -1,6 +1,9 @@
 services:
   prestashop:
-    image: ghcr.io/kanareklife/pasmanteria_fryderyka
+    #image: ghcr.io/kanareklife/pasmanteria_fryderyka
+    build:
+      context: .
+      target: prestashop
     restart: always
     ports:
       - "8080:80"
@@ -14,14 +17,20 @@ services:
       DB_NAME: ${MARIADB_DATABASE}
       DB_USER: ${MARIADB_USER}
       DB_PASSWORD: ${MARIADB_PASSWORD}
+      RESTORE_DB: ${RESTORE_DB}
       DOMAIN: ${DOMAIN}
       SECRET: ${SECRET}
       COOKIE_KEY: ${COOKIE_KEY}
       COOKIE_IV: ${COOKIE_IV}
       NEW_COOKIE_KEY: ${NEW_COOKIE_KEY}
+      PRESTASHOP_URL: ${PRESTASHOP_URL}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      API_KEY: ${API_KEY}
       DEV_MODE: "false"
     depends_on:
-      - prestashop-db
+      prestashop-db:
+        condition: service_healthy
 
   prestashop-db:
     image: mariadb:11.5
@@ -33,6 +42,12 @@ services:
       MARIADB_PASSWORD: ${MARIADB_PASSWORD}
     volumes:
       - prestashop-db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
 volumes:
   prestashop-db-data:
