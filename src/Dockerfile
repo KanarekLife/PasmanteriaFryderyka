@@ -12,7 +12,8 @@ RUN apk add --no-cache \
     libjpeg-turbo-dev \
     jpeg-dev \
     icu-dev \
-    mariadb-client
+    mariadb-client \
+    mariadb-connector-c
 RUN docker-php-ext-configure gd --with-jpeg
 RUN docker-php-ext-install \
     zip \
