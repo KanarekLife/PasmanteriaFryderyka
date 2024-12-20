@@ -12,6 +12,10 @@ if [ "$OPERATION" = "backup" ]; then
   sed -i -e "s/$PRESTASHOP_URL/\$PRESTASHOP_URL/g" /tmp/backup.sql
   sed -i -e "s/$API_KEY/\$API_KEY/g" /tmp/backup.sql
 
+  # Make sure than the encoding is correct
+  sed -i -e "s/utf8mb3/utf8mb4/g" /tmp/backup.sql
+  sed -i -e "s/utf8mb4_uca1400_ai_ci/utf8mb4_unicode_ci/g" /tmp/backup.sql
+
   mv /tmp/backup.sql ./backup.sql
 elif [ "$OPERATION" = "restore" ]; then
   echo "Restoring backup..."

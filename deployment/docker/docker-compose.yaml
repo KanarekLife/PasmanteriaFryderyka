@@ -6,10 +6,10 @@ services:
       - "19304:443"
     environment:
       DB_HOST: admin-mysql_db
-      DB_NAME: 19304
+      DB_NAME: BE_19304
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      RESTORE_DB: "false"
+      RESTORE_DB: "true"
       DOMAIN: ${DOMAIN}
       SECRET: ${SECRET}
       COOKIE_KEY: ${COOKIE_KEY}
@@ -28,12 +28,3 @@ services:
         reservations:
           cpus: "0.25"
           memory: 256M
-    depends_on:
-      - admin-mysql_db
-
-  admin-mysql_db:
-    image: mysql:8.0.31
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
