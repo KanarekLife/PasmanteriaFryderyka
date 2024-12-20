@@ -16,7 +16,8 @@ if [ "$OPERATION" = "backup" ]; then
 elif [ "$OPERATION" = "restore" ]; then
   echo "Restoring backup..."
 
-  cp ./backup.sql /tmp/backup.sql
+  # Remove broken first line and move to tmp
+  tail -n +2 ./backup.sql > /tmp/backup.sql
 
   # Replace all environment variables with sensitive data
   sed -i -e "s/\$MAIL_USER/$MAIL_USER/g" /tmp/backup.sql
