@@ -40,10 +40,10 @@ services:
     image: mariadb:11.5
     restart: on-failure
     environment:
-      MARIADB_DATABASE: ${MARIADB_DATABASE}
-      MARIADB_USER: ${MARIADB_USER}
-      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
-      MARIADB_HOST: ${MARIADB_HOST}
+      DB_NAME: ${MARIADB_DATABASE}
+      DB_USER: ${MARIADB_USER}
+      DB_PASSWORD: ${MARIADB_PASSWORD}
+      DB_HOST: ${MARIADB_HOST}
       PRESTASHOP_URL: ${PRESTASHOP_URL}
       MAIL_USER: ${MAIL_USER}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
@@ -53,7 +53,7 @@ services:
     depends_on:
       - prestashop-db
     command:
-      - /app/db_backup/entrypoint.sh
+      - /app/db_backup/db_manager.sh
     working_dir: /app/db_backup
 
 volumes:

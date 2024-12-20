@@ -11,7 +11,8 @@ RUN apk add --no-cache \
     libpng-dev \
     libjpeg-turbo-dev \
     jpeg-dev \
-    icu-dev
+    icu-dev \
+    mariadb-client
 RUN docker-php-ext-configure gd --with-jpeg
 RUN docker-php-ext-install \
     zip \
@@ -31,3 +32,4 @@ RUN echo 'php_admin_flag[display_errors] = on' >> /usr/local/etc/php/conf.d/dock
 
 FROM prestashop-base AS prestashop
 COPY --chown=www-data:www-data --chmod=755 prestashop /app/prestashop
+COPY db_backup /app/db_backup

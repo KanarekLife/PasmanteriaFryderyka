@@ -77,8 +77,6 @@ jobs:
           echo "PRESTASHOP_API_KEY=$API_KEY" >> $GITHUB_ENV
 
           docker compose up -d
-          sleep 10
-          docker compose -f docker-compose.dev.yaml run -e OPERATION=restore --rm prestashop-db-backup-restore
 
       - name: Setup Firefox
         uses: browser-actions/setup-firefox@v1
