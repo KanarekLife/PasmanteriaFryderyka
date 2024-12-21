@@ -6,7 +6,7 @@ services:
       - "19304:443"
     environment:
       DB_HOST: admin-mysql_db
-      DB_NAME: BE_19304
+      DB_NAME: BE_193044
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       RESTORE_DB: "true"
@@ -19,7 +19,9 @@ services:
       MAIL_USER: ${MAIL_USER}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
       API_KEY: ${API_KEY}
-      DEV_MODE: "true"
+      DEV_MODE: "false"
+    networks:
+      - admin-mysql_default
     deploy:
       resources:
         limits:
@@ -28,3 +30,7 @@ services:
         reservations:
           cpus: "0.25"
           memory: 256M
+
+networks:
+  admin-mysql_default:
+    external: true
