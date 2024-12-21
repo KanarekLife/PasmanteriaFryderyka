@@ -1,0 +1,30 @@
+services:
+  prestashop:
+    image: ghcr.io/kanareklife/pasmanteria_fryderyka
+    restart: unless-stopped
+    ports:
+      - "19304:443"
+    environment:
+      DB_HOST: admin-mysql_db
+      DB_NAME: BE_19304
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      RESTORE_DB: "true"
+      DOMAIN: ${DOMAIN}
+      SECRET: ${SECRET}
+      COOKIE_KEY: ${COOKIE_KEY}
+      COOKIE_IV: ${COOKIE_IV}
+      NEW_COOKIE_KEY: ${NEW_COOKIE_KEY}
+      PRESTASHOP_URL: ${PRESTASHOP_URL}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      API_KEY: ${API_KEY}
+      DEV_MODE: "true"
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 256M
+        reservations:
+          cpus: "0.25"
+          memory: 256M
