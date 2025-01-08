@@ -1,15 +1,14 @@
 services:
-  pasmanteria-fryderyka:
+  prestashop:
     image: ghcr.io/kanareklife/pasmanteria_fryderyka
-    restart: unless-stopped
     ports:
       - "19304:443"
     environment:
-      DB_HOST: BE_193044_pasmanteria-fryderyka-db
-      DB_NAME: ${MARIADB_DATABASE}
-      DB_USER: ${MARIADB_USER}
-      DB_PASSWORD: ${MARIADB_PASSWORD}
-      RESTORE_DB: ${RESTORE_DB}
+      DB_HOST: admin-mysql_db
+      DB_NAME: BE_193044
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      RESTORE_DB: "true"
       DOMAIN: ${DOMAIN}
       SECRET: ${SECRET}
       COOKIE_KEY: ${COOKIE_KEY}
@@ -21,26 +20,7 @@ services:
       API_KEY: ${API_KEY}
       DEV_MODE: "false"
     networks:
-      - pasmanteria-fryderyka
-    deploy:
-      resources:
-        limits:
-          cpus: "2"
-          memory: 256M
-        reservations:
-          cpus: "0.25"
-          memory: 256M
-
-  pasmanteria-fryderyka-db:
-    image: mariadb:11.5
-    restart: unless-stopped
-    environment:
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MARIADB_DATABASE: ${MARIADB_DATABASE}
-      MARIADB_USER: ${MARIADB_USER}
-      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
-    networks:
-      - pasmanteria-fryderyka
+      - admin-mysql_default
     deploy:
       resources:
         limits:
@@ -51,5 +31,5 @@ services:
           memory: 256M
 
 networks:
-  pasmanteria-fryderyka:
-    driver: overlay
+  admin-mysql_default:
+    external: true
