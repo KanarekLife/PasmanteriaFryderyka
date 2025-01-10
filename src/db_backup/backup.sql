@@ -736,7 +736,11 @@ INSERT INTO `ps_access` VALUES
 (1,989),
 (1,990),
 (1,991),
-(1,992);
+(1,992),
+(1,1005),
+(1,1006),
+(1,1007),
+(1,1008);
 /*!40000 ALTER TABLE `ps_access` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1444,7 +1448,7 @@ CREATE TABLE `ps_authorization_role` (
   `slug` varchar(191) NOT NULL,
   PRIMARY KEY (`id_authorization_role`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1586,6 +1590,10 @@ INSERT INTO `ps_authorization_role` VALUES
 (604,'ROLE_MOD_MODULE_PS_FEATUREDPRODUCTS_DELETE'),
 (602,'ROLE_MOD_MODULE_PS_FEATUREDPRODUCTS_READ'),
 (603,'ROLE_MOD_MODULE_PS_FEATUREDPRODUCTS_UPDATE'),
+(1001,'ROLE_MOD_MODULE_PS_GOOGLEANALYTICS_CREATE'),
+(1004,'ROLE_MOD_MODULE_PS_GOOGLEANALYTICS_DELETE'),
+(1002,'ROLE_MOD_MODULE_PS_GOOGLEANALYTICS_READ'),
+(1003,'ROLE_MOD_MODULE_PS_GOOGLEANALYTICS_UPDATE'),
 (605,'ROLE_MOD_MODULE_PS_IMAGESLIDER_CREATE'),
 (608,'ROLE_MOD_MODULE_PS_IMAGESLIDER_DELETE'),
 (606,'ROLE_MOD_MODULE_PS_IMAGESLIDER_READ'),
@@ -1870,6 +1878,10 @@ INSERT INTO `ps_authorization_role` VALUES
 (100,'ROLE_MOD_TAB_ADMINFEATURES_DELETE'),
 (98,'ROLE_MOD_TAB_ADMINFEATURES_READ'),
 (99,'ROLE_MOD_TAB_ADMINFEATURES_UPDATE'),
+(1005,'ROLE_MOD_TAB_ADMINGANALYTICSAJAX_CREATE'),
+(1008,'ROLE_MOD_TAB_ADMINGANALYTICSAJAX_DELETE'),
+(1006,'ROLE_MOD_TAB_ADMINGANALYTICSAJAX_READ'),
+(1007,'ROLE_MOD_TAB_ADMINGANALYTICSAJAX_UPDATE'),
 (101,'ROLE_MOD_TAB_ADMINGENDERS_CREATE'),
 (104,'ROLE_MOD_TAB_ADMINGENDERS_DELETE'),
 (102,'ROLE_MOD_TAB_ADMINGENDERS_READ'),
@@ -5073,7 +5085,7 @@ CREATE TABLE `ps_configuration` (
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=593 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=598 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5542,7 +5554,7 @@ INSERT INTO `ps_configuration` VALUES
 (458,NULL,NULL,'PS_PSX_FIREBASE_REFRESH_DATE','2024-11-16 21:30:27','2024-11-16 21:30:27','2024-11-16 21:30:27'),
 (459,NULL,NULL,'PS_ACCOUNTS_FIREBASE_ID_TOKEN',NULL,'2024-11-16 21:30:27','2024-11-16 21:30:27'),
 (460,NULL,NULL,'PS_ACCOUNTS_ACCESS_TOKEN',NULL,'2024-11-16 21:30:27','2024-11-16 21:30:27'),
-(461,NULL,NULL,'PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN',NULL,'2024-11-16 21:51:06','2025-01-10 16:38:49'),
+(461,NULL,NULL,'PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN',NULL,'2024-11-16 21:51:06','2025-01-10 18:42:22'),
 (462,NULL,NULL,'CONF_PAYPAL_FIXED','0.2','2024-11-16 21:54:06','2024-11-16 21:54:06'),
 (463,NULL,NULL,'CONF_PAYPAL_VAR','2','2024-11-16 21:54:06','2024-11-16 21:54:06'),
 (464,NULL,NULL,'CONF_PAYPAL_FIXED_FOREIGN','0.2','2024-11-16 21:54:06','2024-11-16 21:54:06'),
@@ -5672,7 +5684,12 @@ INSERT INTO `ps_configuration` VALUES
 (589,NULL,NULL,'max_package_weight','0.5','2024-11-19 20:36:43','2024-11-19 20:36:43'),
 (590,NULL,NULL,'max_shipment_weight','0.5','2024-11-19 20:36:43','2024-11-19 20:36:43'),
 (591,NULL,NULL,'CATEGORYPRODUCTS_DISPLAY_PRICE','1','2024-11-24 16:54:48','2024-11-24 16:54:48'),
-(592,NULL,NULL,'CATEGORYPRODUCTS_DISPLAY_PRODUCTS','16','2024-11-24 16:54:48','2024-11-24 16:54:48');
+(592,NULL,NULL,'CATEGORYPRODUCTS_DISPLAY_PRODUCTS','16','2024-11-24 16:54:48','2024-11-24 16:54:48'),
+(593,NULL,NULL,'GA_CANCELLED_STATES','[\"6\"]','2025-01-10 18:39:58','2025-01-10 18:39:58'),
+(594,NULL,NULL,'GA_BACKLOAD_DAYS','30','2025-01-10 18:39:58','2025-01-10 18:39:58'),
+(595,NULL,NULL,'GA_ACCOUNT_ID','G-8N17CZ9YDE','2025-01-10 18:42:15','2025-01-10 18:42:15'),
+(596,NULL,NULL,'GANALYTICS_CONFIGURATION_OK','1','2025-01-10 18:42:15','2025-01-10 18:42:15'),
+(597,NULL,NULL,'GA_USERID_ENABLED','1','2025-01-10 18:42:15','2025-01-10 18:42:15');
 /*!40000 ALTER TABLE `ps_configuration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6014,7 +6031,7 @@ CREATE TABLE `ps_connections_source` (
   KEY `orderby` (`date_add`),
   KEY `http_referer` (`http_referer`),
   KEY `request_uri` (`request_uri`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6028,7 +6045,8 @@ INSERT INTO `ps_connections_source` VALUES
 (2,73,'https://$PRESTASHOP_URL/','$PRESTASHOP_URL/3-wloczki','','2024-11-30 19:57:26'),
 (3,73,'https://$PRESTASHOP_URL/3-wloczki','$PRESTASHOP_URL/wloczka-z-dodatkiem-angory/533-wloczka-angora-lux-pastelowy-turkus-540-3908956063518.html','','2024-11-30 19:57:28'),
 (4,73,'https://$PRESTASHOP_URL/wloczka-100-akryl/20-wloczka-punch-etrofil-74140-3588499866274.html','$PRESTASHOP_URL/','','2024-11-30 20:01:56'),
-(5,73,'https://$PRESTASHOP_URL/wloczka-100-akryl/20-wloczka-punch-etrofil-74140-3588499866274.html','$PRESTASHOP_URL/','','2024-11-30 20:02:46');
+(5,73,'https://$PRESTASHOP_URL/wloczka-100-akryl/20-wloczka-punch-etrofil-74140-3588499866274.html','$PRESTASHOP_URL/','','2024-11-30 20:02:46'),
+(6,74,'https://$PRESTASHOP_URL/admin26720tygg/index.php?controller=AdminDashboard&token=9ee137ca46be689ff0020c38b23626b9','$PRESTASHOP_URL/','','2025-01-10 18:42:27');
 /*!40000 ALTER TABLE `ps_connections_source` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -7536,7 +7554,7 @@ CREATE TABLE `ps_employee_session` (
   `id_employee` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_employee_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7556,7 +7574,8 @@ INSERT INTO `ps_employee_session` VALUES
 (14,1,'b0dbec9773cd2c325d921fd4210bb882d36a57bb'),
 (15,1,'87ed70203f8a4514335f18d9d499b564e716ee00'),
 (16,1,'33c8175d24599f372ad99ad0335d2b6d55da1009'),
-(18,1,'a133704ec2ae43ecbfbf1e4ff102de7026495087');
+(18,1,'a133704ec2ae43ecbfbf1e4ff102de7026495087'),
+(19,1,'d73c68670dc97aeb33d1c3bb2afa9de560e3eacc');
 /*!40000 ALTER TABLE `ps_employee_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -10135,6 +10154,63 @@ INSERT INTO `ps_feature_value_lang` VALUES
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ps_ganalytics`
+--
+
+DROP TABLE IF EXISTS `ps_ganalytics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_ganalytics` (
+  `id_google_analytics` int(11) NOT NULL AUTO_INCREMENT,
+  `id_order` int(11) NOT NULL,
+  `id_customer` int(10) NOT NULL,
+  `id_shop` int(11) NOT NULL,
+  `sent` tinyint(1) DEFAULT NULL,
+  `refund_sent` tinyint(1) DEFAULT NULL,
+  `date_add` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_google_analytics`),
+  KEY `id_order` (`id_order`),
+  KEY `sent` (`sent`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_ganalytics`
+--
+
+LOCK TABLES `ps_ganalytics` WRITE;
+/*!40000 ALTER TABLE `ps_ganalytics` DISABLE KEYS */;
+INSERT INTO `ps_ganalytics` VALUES
+(1,5,0,1,1,NULL,'2025-01-10 17:27:11'),
+(2,6,0,1,1,NULL,'2025-01-10 17:30:27');
+/*!40000 ALTER TABLE `ps_ganalytics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_ganalytics_data`
+--
+
+DROP TABLE IF EXISTS `ps_ganalytics_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_ganalytics_data` (
+  `id_cart` int(11) NOT NULL,
+  `id_shop` int(11) NOT NULL,
+  `data` text DEFAULT NULL,
+  PRIMARY KEY (`id_cart`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_ganalytics_data`
+--
+
+LOCK TABLES `ps_ganalytics_data` WRITE;
+/*!40000 ALTER TABLE `ps_ganalytics_data` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_ganalytics_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ps_gender`
 --
 
@@ -11701,6 +11777,10 @@ INSERT INTO `ps_hook_module` VALUES
 (64,1,816,1),
 (65,1,335,1),
 (72,1,831,1),
+(73,1,1,1),
+(73,1,29,1),
+(73,1,62,1),
+(73,1,76,1),
 (4,1,682,2),
 (4,1,688,2),
 (5,1,689,2),
@@ -11753,6 +11833,8 @@ INSERT INTO `ps_hook_module` VALUES
 (69,1,19,2),
 (69,1,20,2),
 (69,1,28,2),
+(73,1,24,2),
+(73,1,36,2),
 (5,1,682,3),
 (5,1,688,3),
 (6,1,689,3),
@@ -11774,6 +11856,7 @@ INSERT INTO `ps_hook_module` VALUES
 (72,1,19,3),
 (72,1,20,3),
 (72,1,28,3),
+(73,1,69,3),
 (6,1,688,4),
 (7,1,682,4),
 (32,1,16,4),
@@ -11784,6 +11867,8 @@ INSERT INTO `ps_hook_module` VALUES
 (64,1,46,4),
 (64,1,697,4),
 (69,1,15,4),
+(73,1,31,4),
+(73,1,746,4),
 (20,1,15,5),
 (39,1,55,5),
 (54,1,682,5),
@@ -11795,11 +11880,14 @@ INSERT INTO `ps_hook_module` VALUES
 (40,1,55,6),
 (57,1,682,6),
 (60,1,16,6),
+(73,1,46,6),
+(73,1,71,6),
 (41,1,55,7),
 (58,1,682,7),
 (64,1,16,7),
 (42,1,55,8),
 (65,1,682,8),
+(73,1,16,8),
 (43,1,55,9),
 (45,1,55,10),
 (46,1,55,11),
@@ -23290,7 +23378,7 @@ CREATE TABLE `ps_log` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=445 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=447 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -23743,7 +23831,9 @@ INSERT INTO `ps_log` VALUES
 (441,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 17:35:35','2024-11-30 17:35:35'),
 (442,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 20:02:07','2024-11-30 20:02:07'),
 (443,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-12-01 16:30:29','2024-12-01 16:30:29'),
-(444,1,0,'Połączenie z panelem administracyjnym z 172.21.0.1','',0,NULL,NULL,1,1,1,'2025-01-10 16:38:47','2025-01-10 16:38:47');
+(444,1,0,'Połączenie z panelem administracyjnym z 172.21.0.1','',0,NULL,NULL,1,1,1,'2025-01-10 16:38:47','2025-01-10 16:38:47'),
+(445,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2025-01-10 18:39:31','2025-01-10 18:39:31'),
+(446,1,0,'Protect vendor folder in module ps_googleanalytics','',0,1,NULL,1,0,1,'2025-01-10 18:39:58','2025-01-10 18:39:58');
 /*!40000 ALTER TABLE `ps_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -24114,7 +24204,7 @@ CREATE TABLE `ps_module` (
   PRIMARY KEY (`id_module`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -24189,7 +24279,8 @@ INSERT INTO `ps_module` VALUES
 (65,'ps_mbo',1,'3.2.0'),
 (66,'ps_cashondelivery',1,'2.0.1'),
 (69,'ps_newproducts',1,'1.0.4'),
-(72,'ps_categoryproducts',1,'1.0.7');
+(72,'ps_categoryproducts',1,'1.0.7'),
+(73,'ps_googleanalytics',1,'5.0.2');
 /*!40000 ALTER TABLE `ps_module` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -24477,7 +24568,11 @@ INSERT INTO `ps_module_access` VALUES
 (1,997),
 (1,998),
 (1,999),
-(1,1000);
+(1,1000),
+(1,1001),
+(1,1002),
+(1,1003),
+(1,1004);
 /*!40000 ALTER TABLE `ps_module_access` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -25240,7 +25335,10 @@ INSERT INTO `ps_module_group` VALUES
 (69,1,3),
 (72,1,1),
 (72,1,2),
-(72,1,3);
+(72,1,3),
+(73,1,1),
+(73,1,2),
+(73,1,3);
 /*!40000 ALTER TABLE `ps_module_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -25258,7 +25356,7 @@ CREATE TABLE `ps_module_history` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -25277,7 +25375,8 @@ INSERT INTO `ps_module_history` VALUES
 (7,1,25,'2024-11-19 20:40:44','2024-11-24 16:53:06'),
 (8,1,2,'2024-11-19 20:44:01','2024-11-19 20:44:01'),
 (9,1,69,'2024-11-24 13:16:44','2024-11-24 13:16:44'),
-(10,1,72,'2024-11-24 16:55:43','2024-11-24 16:55:43');
+(10,1,72,'2024-11-24 16:55:43','2024-11-24 16:55:43'),
+(11,1,73,'2025-01-10 18:40:05','2025-01-10 18:40:05');
 /*!40000 ALTER TABLE `ps_module_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -25395,7 +25494,8 @@ INSERT INTO `ps_module_shop` VALUES
 (65,1,7),
 (66,1,7),
 (69,1,7),
-(72,1,7);
+(72,1,7),
+(73,1,7);
 /*!40000 ALTER TABLE `ps_module_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110263,7 +110363,7 @@ CREATE TABLE `ps_tab` (
   `wording` varchar(255) DEFAULT NULL,
   `wording_domain` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_tab`)
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110430,7 +110530,8 @@ INSERT INTO `ps_tab` VALUES
 (163,-1,1,'ps_mbo','AdminPsMboRecommended','',1,1,0,'','Recommended Modules and Services','Modules.Mbo.Recommendedmodulesandservices'),
 (164,52,0,'ps_mbo','AdminPsMboTheme','',1,1,0,'',NULL,NULL),
 (165,44,2,'ps_mbo','AdminPsMboUninstalledModules','',1,1,0,'','Uninstalled modules','Modules.Mbo.Modulesselection'),
-(166,-1,13,'ps_imageslider','AdminConfigureSlides','',1,1,0,'',NULL,NULL);
+(166,-1,13,'ps_imageslider','AdminConfigureSlides','',1,1,0,'',NULL,NULL),
+(182,-1,14,'ps_googleanalytics','AdminGanalyticsAjax','',1,1,0,'',NULL,NULL);
 /*!40000 ALTER TABLE `ps_tab` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110611,7 +110712,8 @@ INSERT INTO `ps_tab_lang` VALUES
 (163,1,'Recommended Modules and Services'),
 (164,1,'Katalog'),
 (165,1,'Odinstalowane moduły'),
-(166,1,'Slider zdjęć');
+(166,1,'Slider zdjęć'),
+(182,1,'Google Analytics');
 /*!40000 ALTER TABLE `ps_tab_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112408,4 +112510,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-01-10 15:40:19
+-- Dump completed on 2025-01-10 17:43:34
