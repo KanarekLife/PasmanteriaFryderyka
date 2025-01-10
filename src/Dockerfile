@@ -13,7 +13,11 @@ RUN apk add --no-cache \
     jpeg-dev \
     icu-dev \
     mariadb-client \
-    mariadb-connector-c
+    mariadb-connector-c \
+    memcached \
+    libmemcached-dev \
+    libmemcached \
+    zlib-dev
 RUN docker-php-ext-configure gd --with-jpeg
 RUN docker-php-ext-install \
     zip \
@@ -21,7 +25,9 @@ RUN docker-php-ext-install \
     pdo_mysql\
     intl \
     opcache
-RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
+# Install memcached PHP extension
+RUN apk add --no-cache make g++ autoconf pkgconfig && pecl install memcached && \
+    docker-php-ext-enable memcached && apk del make g++ autoconf pkgconfig
 # Set location for Caddy configuration and data
 COPY Caddyfile entrypoint.sh /app/
 COPY templates /app/templates
