@@ -17,5 +17,6 @@ if [ "$RESTORE_DB" == "true" ]; then
     )
 fi
 
+memcached -d -u memcached
 caddy start
 exec php-fpm # without exec, php-fpm will not receive signals
