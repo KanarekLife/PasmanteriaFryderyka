@@ -27,7 +27,6 @@
     console.log("Banner clicked: " + banner_name);
     gtag('event', 'banner_clicked', {
       'event_category': 'engagement',
-      'event_action': 'click',
       'event_label': banner_name
     });
   }
