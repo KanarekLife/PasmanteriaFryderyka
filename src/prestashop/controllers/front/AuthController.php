@@ -92,7 +92,8 @@ class AuthControllerCore extends FrontController
             if (Tools::urlBelongsToShop($back)) {
                 // Checks to see if "back" is a fully qualified
                 // URL that is on OUR domain, with the right protocol
-                return $this->redirectWithNotifications($back);
+                //return $this->redirectWithNotifications($back);
+                return $this->redirectWithNotifications("/my-account?new_account=1");
             }
 
             // Well we're not redirecting to a URL,
