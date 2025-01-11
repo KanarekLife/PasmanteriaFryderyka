@@ -22,7 +22,16 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-
+ <script defer>
+  function trackBannerClick(banner_name = 'unknown') {
+    console.log("Banner clicked: " + banner_name);
+    gtag('event', 'banner_clicked', {
+      'event_category': 'engagement',
+      'event_action': 'click',
+      'event_label': banner_name
+    });
+  }
+ </script>
 {if $homeslider.slides}
   <div class="container">
     <div class="flexslider"
@@ -34,7 +43,7 @@
         <li class="slide flex-active-slide"
             style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
           <a href="/szukaj?controller=search&s=gazzal+exclusive"
-             title="">
+             title="" onclick="trackBannerClick('Gazzal exclusive')">
             <img src="/img/custom/slider/gazzal_exclusive.jpg"
                  alt="ff52ee19ce63a010545b8df15f110fc1112c5669-exclusive 2"
                  title="exclusive"
@@ -60,7 +69,7 @@
       <ul>
         <li class="slide tmsubbanner-container">
           <a href="/search?controller=search&s=paper+yarn"
-             title="paper yarn">
+             title="paper yarn" onclick="trackBannerClick('Paper yarn')">
             <img src="/img/custom/slider/paper_yarn.jpg"
                  alt="paper yarn"
                  title="paper yarn">
@@ -68,7 +77,7 @@
         </li>
         <li class="slide tmsubbanner-container">
           <a href="/szukaj?controller=search&s=baby+cotton"
-             title="baby cotton">
+             title="baby cotton" onclick="trackBannerClick('Baby cotton')">
             <img src="/img/custom/slider/baby_cotton.jpg"
                  alt="baby cotton"
                  title="baby cotton">
@@ -83,33 +92,33 @@
             <div class="cmsbanner">
               <div class="left_side hb-animate-element top-to-bottom hb-in-viewport">
                 <div class="left_sub_image"><a
-                     href="/search?controller=search&s=punch"> <img
+                     href="/search?controller=search&s=punch" onclick="trackBannerClick('Punch')"> <img
                          src="/img/custom/slider/punch.jpg"
                          alt="bawełenka"
                          width="590"
                          height="253"></a>
                   <div class="bannercms-content1 full-banner">
                     <div class="banner-subtext"><a
-                         href="/search?controller=search&s=punch">zobacz...</a></div>
+                         href="/search?controller=search&s=punch" onclick="trackBannerClick('Punch')">zobacz...</a></div>
                     <div class="banner-text1"><a
-                         href="/search?controller=search&s=punch"><span
+                         href="/search?controller=search&s=punch" onclick="trackBannerClick('Punch')"><span
                               class="banner-subtext2">PUNCH&nbsp;&nbsp;</span></a></div>
-                    <a href="/search?controller=search&s=punch">ETROFIL&nbsp;</a>
+                    <a href="/search?controller=search&s=punch" onclick="trackBannerClick('Punch')">ETROFIL&nbsp;</a>
                   </div>
                 </div>
               </div>
               <div class="right_side hb-animate-element bottom-to-top hb-in-viewport">
-                <div class="right_top_image"><a href="/search?controller=search&s=teddy"> <img
+                <div class="right_top_image"><a href="/search?controller=search&s=teddy" onclick="trackBannerClick('Teddy')"> <img
                          src="/img/custom/slider/teddy.jpg"
                          alt="teddy"
                          width="590"
                          height="253"></a>
                   <div class="bannercms-content2 full-banner">
                     <div class="banner-subtext"><a
-                         href="/search?controller=search&s=teddy">zobacz...</a></div>
+                         href="/search?controller=search&s=teddy" onclick="trackBannerClick('Teddy')">zobacz...</a></div>
                     <div class="banner-text1"><a
-                         href="/search?controller=search&s=teddy">NOWOŚĆ&nbsp;TEDDY</a></div>
-                    <a href="/search?controller=search&s=teddy">GAZZAL</a>
+                         href="/search?controller=search&s=teddy" onclick="trackBannerClick('Teddy')">NOWOŚĆ&nbsp;TEDDY</a></div>
+                    <a href="/search?controller=search&s=teddy" onclick="trackBannerClick('Teddy')">GAZZAL</a>
                   </div>
                 </div>
               </div>
